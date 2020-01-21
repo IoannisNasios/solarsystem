@@ -14,7 +14,7 @@ setuptools.setup(
     url="https://github.com/IoannisNasios/solarsystem",
     download_url="https://github.com/IoannisNasios/solarsystem/archive/0.1.0.tar.gz",
     packages=setuptools.find_packages(exclude=["docs", "examples"]),
-    install_requires =[''],
+    install_requires = [],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
