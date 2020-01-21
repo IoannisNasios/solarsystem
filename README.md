@@ -99,6 +99,11 @@ Pending
 
 #### **Installation** 
 
+instasll from Pypi:
+```python
+pip install solarsystem
+```
+
 Latest version from source:
 ```python
 pip install git+https://github.com/IoannisNasios/solarsystem
