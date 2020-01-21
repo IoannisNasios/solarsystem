@@ -78,11 +78,11 @@ for planet in planets_dict:
 
 #### **Examples - Use Cases**
 
-* Solar System Live: https://github.com/IoannisNasios/solarsystem/examples/Solar_System_Live.ipynb.
+* Solar System Live: https://github.com/IoannisNasios/solarsystem/blob/master/examples/Solar_System_Live.ipynb.
     * Plot planets around Sun, watch where planets are around Sun
     * Get the Geocentric positions of Sun, planets, nano planets, our Moon and 1 Centaur
 
-* RiseSet Calendar : https://github.com/IoannisNasios/solarsystem/examples/RiseSet_Calendar.ipynb.
+* RiseSet Calendar : https://github.com/IoannisNasios/solarsystem/blob/master/examples/RiseSet_Calendar.ipynb.
     * Time of sun rise and set within each day
     Time of moon rise and set within each day
     Moon phase - percent of illumination
@@ -92,7 +92,7 @@ for planet in planets_dict:
 
 #### **Documentation**
 
-Dcumentation can be read on https://github.com/IoannisNasios/solarsystem/docs/_build/html/index.html.
+Pending
 
 
 &nbsp;   &nbsp;   &nbsp;   
@@ -101,7 +101,7 @@ Dcumentation can be read on https://github.com/IoannisNasios/solarsystem/docs/_b
 
 Latest version from source:
 ```python
-$ pip install git+https://github.com/IoannisNasios/solarsystem
+pip install git+https://github.com/IoannisNasios/solarsystem
 ```
 
 &nbsp;   &nbsp;   &nbsp;   
@@ -110,12 +110,12 @@ $ pip install git+https://github.com/IoannisNasios/solarsystem
 
 No requirements, no additional libraries needs to be installed.
 
-Exception: example notebook [Solar System Live](https://github.com/IoannisNasios/solarsystem/examples/Solar_System_Live.ipynb), matplolib is needed in order to view the plot
+Exception: example notebook [Solar System Live](https://github.com/IoannisNasios/solarsystem/blob/master/examples/Solar_System_Live.ipynb), matplotlib is needed in order to view the plot
 
 
 &nbsp;   &nbsp;   &nbsp;   
 
 #### **License**
 solarsystem is MIT-licensed.
-Read [License](https://github.com/IoannisNasios/solarsystem/LICENSE)
+Read [License](https://github.com/IoannisNasios/solarsystem/blob/master/LICENSE)
 
