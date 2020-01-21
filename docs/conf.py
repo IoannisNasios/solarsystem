@@ -21,6 +21,9 @@ project = 'solarsystem'
 copyright = '2020, Ioannis Nasios'
 author = 'Ioannis Nasios'
 
+# -- master_doc --------------------------------------------------------------
+
+master_doc = 'index'
 
 # -- General configuration ---------------------------------------------------
 
