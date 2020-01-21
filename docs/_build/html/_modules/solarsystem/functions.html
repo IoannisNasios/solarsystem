@@ -1,0 +1,389 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>solarsystem.functions &#8212; solarsystem 0.1.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for solarsystem.functions</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">math</span>
+
+    
+
+<div class="viewcode-block" id="normalize"><a class="viewcode-back" href="../../solarsystem.functions.html#solarsystem.functions.normalize">[docs]</a><span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="n">degrees</span><span class="p">):</span>  
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    set degrees always between 0 - 360</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        degrees (float): degrees to be adjusted</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        float: degrees between 0-360</span>
+<span class="sd">        </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">degrees</span> <span class="o">%</span> <span class="mi">360</span></div>
+
+    
+
+<div class="viewcode-block" id="spherical2rectangular"><a class="viewcode-back" href="../../solarsystem.functions.html#solarsystem.functions.spherical2rectangular">[docs]</a><span class="k">def</span> <span class="nf">spherical2rectangular</span><span class="p">(</span><span class="n">RA</span><span class="p">,</span> <span class="n">Decl</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Transform spherical to rectangular projection.</span>
+<span class="sd">    </span>
+<span class="sd">    From spherical (RA,Decl) coordinates system to rectangular(x,y,z) or </span>
+<span class="sd">    by replacing RA with longitude and Decl with latitude we can tranform </span>
+<span class="sd">    ecliptic coordinates to horizontal (azimuth,altitude).</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        RA: Right Ascension.</span>
+<span class="sd">        Decl: Declination.</span>
+<span class="sd">        r: Distance in astronomical units.</span>
+<span class="sd">   </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: x, y, z rectangular coordinate system. </span>
+<span class="sd">        </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">RA</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">RA</span><span class="p">)</span>
+    <span class="n">Decl</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">Decl</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">r</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">RA</span><span class="p">)</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">Decl</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">r</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">RA</span><span class="p">)</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">Decl</span><span class="p">)</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">r</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">Decl</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="rectangular2spherical"><a class="viewcode-back" href="../../solarsystem.functions.html#solarsystem.functions.rectangular2spherical">[docs]</a><span class="k">def</span> <span class="nf">rectangular2spherical</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Transform rectangular to spherical projection.</span>
+<span class="sd">    </span>
+<span class="sd">    From rectangular(x,y,z) coordinates system to spherical (RA,Decl, r) or </span>
+<span class="sd">    by replacing x with azimuth and y with altitude we can tranform </span>
+<span class="sd">    horizontal coordinates to ecliptic (longitude, latitude).</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        x: value on x axis of a rectangular projection.</span>
+<span class="sd">        y: value on y axis of a rectangular projection.</span>
+<span class="sd">        z: value on z axis of a rectangular projection.</span>
+<span class="sd">   </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: RA, Decl, r spherical coordinate system. </span>
+<span class="sd">        </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">r</span>    <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="n">z</span><span class="o">*</span><span class="n">z</span> <span class="p">)</span>
+    <span class="n">RA</span>   <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">atan2</span><span class="p">(</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="p">)</span>
+<span class="c1">#    Decl = math.asin( z / r ) </span>
+    <span class="n">Decl</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">atan2</span><span class="p">(</span> <span class="n">z</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">y</span> <span class="p">)</span> <span class="p">)</span>
+    
+    <span class="n">RA</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">RA</span><span class="p">))</span>
+    <span class="n">Decl</span> <span class="o">=</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">Decl</span><span class="p">))</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">RA</span><span class="p">,</span> <span class="n">Decl</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span></div>
+    
+
+
+<div class="viewcode-block" id="ecliptic2equatorial"><a class="viewcode-back" href="../../solarsystem.functions.html#solarsystem.functions.ecliptic2equatorial">[docs]</a><span class="k">def</span> <span class="nf">ecliptic2equatorial</span><span class="p">(</span><span class="n">xeclip</span><span class="p">,</span> <span class="n">yeclip</span><span class="p">,</span> <span class="n">zeclip</span><span class="p">,</span> <span class="n">oblecl</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Transform ecliptic to equatorial projection.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        xeclip: value on x axis of ecliptic plane.</span>
+<span class="sd">        yeclip: value on y axis of ecliptic plane.</span>
+<span class="sd">        zeclip: value on z axis of ecliptic plane.</span>
+<span class="sd">        oblecl: obliquity of the ecliptic, approximately 23.4 degrees for earth</span>
+<span class="sd">   </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: x, y, z equatorial projection </span>
+<span class="sd">        </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<span class="c1">#    oblecl = math.radians(oblecl)</span>
+    
+    <span class="n">xequat</span> <span class="o">=</span> <span class="n">xeclip</span>
+    <span class="n">yequat</span> <span class="o">=</span> <span class="n">yeclip</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">oblecl</span><span class="p">)</span> <span class="o">-</span> <span class="n">zeclip</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">oblecl</span><span class="p">)</span>
+    <span class="n">zequat</span> <span class="o">=</span> <span class="n">yeclip</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">oblecl</span><span class="p">)</span> <span class="o">+</span> <span class="n">zeclip</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">oblecl</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="p">(</span><span class="n">xequat</span><span class="p">,</span> <span class="n">yequat</span><span class="p">,</span> <span class="n">zequat</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="equatorial2ecliptic"><a class="viewcode-back" href="../../solarsystem.functions.html#solarsystem.functions.equatorial2ecliptic">[docs]</a><span class="k">def</span> <span class="nf">equatorial2ecliptic</span><span class="p">(</span><span class="n">xequat</span><span class="p">,</span> <span class="n">yequat</span><span class="p">,</span> <span class="n">zequat</span><span class="p">,</span> <span class="n">oblecl</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Transform equatorial to ecliptic projection.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        xequat: value on x axis of equatorial plane</span>
+<span class="sd">        yequat: value on y axis of equatorial plane</span>
+<span class="sd">        zequat: value on z axis of equatorial plane</span>
+<span class="sd">        oblecl: obliquity of the ecliptic, approximately 23.4 degrees for earth</span>
+<span class="sd">   </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: x, y, z ecliptic projection </span>
+<span class="sd">        </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+<span class="c1">#    oblecl = math.radians(oblecl)</span>
+    <span class="n">xeclip</span> <span class="o">=</span> <span class="n">xequat</span>
+    <span class="n">yeclip</span> <span class="o">=</span> <span class="n">yequat</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="o">-</span><span class="n">oblecl</span><span class="p">)</span> <span class="o">-</span> <span class="n">zequat</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="o">-</span><span class="n">oblecl</span><span class="p">)</span>
+    <span class="n">zeclip</span> <span class="o">=</span> <span class="n">yequat</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="o">-</span><span class="n">oblecl</span><span class="p">)</span> <span class="o">+</span> <span class="n">zequat</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="o">-</span><span class="n">oblecl</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">xeclip</span><span class="p">,</span> <span class="n">yeclip</span><span class="p">,</span> <span class="n">zeclip</span><span class="p">)</span></div>
+    
+
+
+<div class="viewcode-block" id="spherical_ecliptic2equatorial"><a class="viewcode-back" href="../../solarsystem.functions.html#solarsystem.functions.spherical_ecliptic2equatorial">[docs]</a><span class="k">def</span> <span class="nf">spherical_ecliptic2equatorial</span><span class="p">(</span><span class="n">long</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">oblecl</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Transform eclipitc to spherical projection for given obliquity.</span>
+<span class="sd">    </span>
+<span class="sd">    From spherical (RA, Decl, distance) coordinates system to </span>
+<span class="sd">    eclipitc(long, lat, distance).</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        long: Longitude.</span>
+<span class="sd">        last: Latitude.</span>
+<span class="sd">        distance: Distance in astronomical units.</span>
+<span class="sd">        oblecl: obliquity (axial tilt).</span>
+<span class="sd">            </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: RA, Decl, distance spherical coordinate system. </span>
+<span class="sd">        </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">b</span> <span class="o">=</span> <span class="n">spherical2rectangular</span><span class="p">(</span><span class="n">long</span><span class="p">,</span><span class="n">lat</span><span class="p">,</span><span class="n">distance</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">ecliptic2equatorial</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">oblecl</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">rectangular2spherical</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="spherical_equatorial2ecliptic"><a class="viewcode-back" href="../../solarsystem.functions.html#solarsystem.functions.spherical_equatorial2ecliptic">[docs]</a><span class="k">def</span> <span class="nf">spherical_equatorial2ecliptic</span><span class="p">(</span><span class="n">RA</span><span class="p">,</span> <span class="n">Decl</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">oblecl</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Transform spherical to eclipitc projection for given obliquity.</span>
+<span class="sd">    </span>
+<span class="sd">    From spherical (RA, Decl, distance) coordinates system to </span>
+<span class="sd">    eclipitc(long, lat, distance).</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        RA: Right Ascension.</span>
+<span class="sd">        Decl: Declination.</span>
+<span class="sd">        distance: Distance in astronomical units.</span>
+<span class="sd">        oblecl: obliquity (axial tilt).</span>
+<span class="sd">            </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: long, lat, distance eclipitc coordinate system. </span>
+<span class="sd">        </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">b</span> <span class="o">=</span> <span class="n">spherical2rectangular</span><span class="p">(</span><span class="n">RA</span><span class="p">,</span> <span class="n">Decl</span><span class="p">,</span><span class="n">distance</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">equatorial2ecliptic</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">b</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">oblecl</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">rectangular2spherical</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">c</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="demical2clock"><a class="viewcode-back" href="../../solarsystem.functions.html#solarsystem.functions.demical2clock">[docs]</a><span class="k">def</span> <span class="nf">demical2clock</span><span class="p">(</span><span class="n">demicaltime</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert demical time view to Hours, Minutes and Seconds.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        demicaltime (float): time to be converted.</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        str: one string representation in hours, minutes format.</span>
+<span class="sd">        </span>
+<span class="sd">    &quot;&quot;&quot;</span> 
+    <span class="n">h</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">demicaltime</span><span class="p">)</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">demicaltime</span> <span class="o">-</span> <span class="n">h</span><span class="p">)</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(((</span><span class="n">demicaltime</span><span class="o">-</span><span class="n">h</span><span class="p">)</span><span class="o">*</span><span class="mi">60</span> <span class="o">-</span> <span class="n">m</span> <span class="p">)</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="n">h</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    <span class="n">s</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">h</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span> <span class="n">h</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span> <span class="o">+</span> <span class="n">h</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span> <span class="n">m</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span> <span class="o">+</span> <span class="n">m</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span> <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span> <span class="o">+</span> <span class="n">s</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">h</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span><span class="o">+</span> <span class="n">m</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span><span class="o">+</span> <span class="n">s</span>
+    <span class="k">return</span> <span class="n">res</span></div>
+
+
+<div class="viewcode-block" id="demical2arcs"><a class="viewcode-back" href="../../solarsystem.functions.html#solarsystem.functions.demical2arcs">[docs]</a><span class="k">def</span> <span class="nf">demical2arcs</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert Demical view to Degrees and minutes.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        num (float): degrees to be converted.</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        str: one string representation in degrees and minutes format.</span>
+<span class="sd">        </span>
+<span class="sd">    &quot;&quot;&quot;</span>       
+    <span class="k">return</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">num</span><span class="p">))</span><span class="o">+</span><span class="sa">u</span><span class="s2">&quot;</span><span class="se">\u00b0</span><span class="s2"> &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">num</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">num</span><span class="p">))</span><span class="o">*</span><span class="mi">60</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span><span class="o">+</span><span class="s2">&quot;&#39;&quot;</span><span class="p">)</span></div>
+
+<span class="c1">#def degrees2hours(degrees):</span>
+<span class="c1">#    &quot;&quot;&quot;</span>
+<span class="c1">#    Convert degrees to string representation of hours, minutes and seconds.</span>
+<span class="c1">#    </span>
+<span class="c1">#    Args:</span>
+<span class="c1">#        degrees (float): degrees to be converted.</span>
+<span class="c1">#        </span>
+<span class="c1">#    Returns:</span>
+<span class="c1">#        str: one string representation in hours, minutes and seconds format.</span>
+<span class="c1">#        </span>
+<span class="c1">#    &quot;&quot;&quot;    </span>
+<span class="c1">#    h=degrees//15</span>
+<span class="c1">#    r=(degrees%15)*4</span>
+<span class="c1">#    m=int(r)</span>
+<span class="c1">#    s=int((r-m)*60)</span>
+<span class="c1">#    return (str(h)+&#39;h &#39;+str(m)+&#39;m &#39;+str(s)+&#39;s&#39;)</span>
+
+<div class="viewcode-block" id="demical2hms"><a class="viewcode-back" href="../../solarsystem.functions.html#solarsystem.functions.demical2hms">[docs]</a><span class="k">def</span> <span class="nf">demical2hms</span><span class="p">(</span><span class="n">degrees</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert degrees to string representation of hours, minutes and seconds.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        degrees (float): degrees to be converted.</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        str: one string representation in hours, minutes and seconds format.</span>
+<span class="sd">        </span>
+<span class="sd">    &quot;&quot;&quot;</span>   
+    
+    <span class="n">h</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">degrees</span><span class="o">/</span><span class="mi">15</span><span class="p">)</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">degrees</span><span class="o">/</span><span class="mi">15</span> <span class="o">-</span> <span class="n">h</span><span class="p">)</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(((</span><span class="n">degrees</span><span class="o">/</span><span class="mi">15</span><span class="o">-</span><span class="n">h</span><span class="p">)</span><span class="o">*</span><span class="mi">60</span> <span class="o">-</span> <span class="n">m</span> <span class="p">)</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="n">h</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    <span class="n">s</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">h</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span> <span class="n">h</span> <span class="o">=</span>  <span class="n">h</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span> <span class="n">m</span> <span class="o">=</span>  <span class="n">m</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span> <span class="n">s</span> <span class="o">=</span>  <span class="n">s</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">h</span> <span class="o">+</span> <span class="s1">&#39;h &#39;</span><span class="o">+</span> <span class="n">m</span> <span class="o">+</span> <span class="s1">&#39;m &#39;</span><span class="o">+</span> <span class="n">s</span> <span class="o">+</span><span class="s1">&#39;s&#39;</span>
+    <span class="k">return</span> <span class="n">res</span></div>
+
+
+<div class="viewcode-block" id="Planet_Sun"><a class="viewcode-back" href="../../solarsystem.functions.html#solarsystem.functions.Planet_Sun">[docs]</a><span class="k">def</span> <span class="nf">Planet_Sun</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Helper Function. From planet&#39;s trajectory elements to position around sun</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: position elements</span>
+<span class="sd">        </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">M2</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+    <span class="n">E0</span><span class="o">=</span><span class="n">M</span> <span class="o">+</span> <span class="p">(</span><span class="mi">180</span><span class="o">/</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">*</span><span class="n">e</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">M2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">e</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">M2</span><span class="p">))</span>
+    <span class="n">E0</span><span class="o">=</span><span class="n">normalize</span><span class="p">(</span><span class="n">E0</span><span class="p">)</span> 
+    <span class="n">E02</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">E0</span><span class="p">)</span>
+    <span class="n">E1</span><span class="o">=</span><span class="n">E0</span> <span class="o">-</span> <span class="p">(</span><span class="n">E0</span> <span class="o">-</span> <span class="p">(</span><span class="mi">180</span><span class="o">/</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">*</span><span class="n">e</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">E02</span><span class="p">)</span><span class="o">-</span><span class="n">M</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">e</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">E02</span><span class="p">))</span>
+    <span class="n">E1</span><span class="o">=</span><span class="n">normalize</span><span class="p">(</span><span class="n">E1</span><span class="p">)</span> 
+    <span class="n">E</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">E1</span><span class="p">)</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">a</span><span class="o">*</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">E</span><span class="p">)</span><span class="o">-</span><span class="n">e</span><span class="p">)</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">a</span><span class="o">*</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">e</span><span class="o">*</span><span class="n">e</span><span class="p">))</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">E</span><span class="p">)</span>
+
+    <span class="n">r</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="o">*</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">v</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">atan2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    <span class="n">v</span><span class="o">=</span><span class="n">normalize</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+
+    <span class="n">xeclip</span><span class="o">=</span><span class="n">r</span><span class="o">*</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">N</span><span class="p">))</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">v</span><span class="o">+</span><span class="n">w</span><span class="p">))</span> <span class="o">-</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">N</span><span class="p">))</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">v</span><span class="o">+</span><span class="n">w</span><span class="p">))</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">i</span><span class="p">)))</span>
+    <span class="n">yeclip</span><span class="o">=</span><span class="n">r</span><span class="o">*</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">N</span><span class="p">))</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">v</span><span class="o">+</span><span class="n">w</span><span class="p">))</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">N</span><span class="p">))</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">v</span><span class="o">+</span><span class="n">w</span><span class="p">))</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">i</span><span class="p">)))</span>
+    <span class="n">zeclip</span><span class="o">=</span><span class="n">r</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">v</span><span class="o">+</span><span class="n">w</span><span class="p">))</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> 
+    <span class="n">long2</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">atan2</span><span class="p">(</span> <span class="n">yeclip</span><span class="p">,</span> <span class="n">xeclip</span> <span class="p">)</span>
+    <span class="n">long2</span><span class="o">=</span><span class="n">normalize</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">long2</span><span class="p">))</span>
+    <span class="n">lat2</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">atan2</span><span class="p">(</span> <span class="n">zeclip</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="n">xeclip</span><span class="o">*</span><span class="n">xeclip</span> <span class="o">+</span><span class="n">yeclip</span><span class="o">*</span><span class="n">yeclip</span> <span class="p">)</span> <span class="p">)</span>
+    <span class="n">lat2</span><span class="o">=</span><span class="n">math</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">lat2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">xeclip</span><span class="p">,</span><span class="n">yeclip</span><span class="p">,</span><span class="n">zeclip</span><span class="p">,</span> <span class="n">long2</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="sun2planet"><a class="viewcode-back" href="../../solarsystem.functions.html#solarsystem.functions.sun2planet">[docs]</a><span class="k">def</span> <span class="nf">sun2planet</span><span class="p">(</span><span class="n">xeclip</span><span class="p">,</span> <span class="n">yeclip</span><span class="p">,</span> <span class="n">zeclip</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Helper Function. From Hliocentric to Geocentric position</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        tuple: geocentric view of object.</span>
+<span class="sd">        </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x_geoc</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">xeclip</span><span class="p">)</span>
+    <span class="n">y_geoc</span><span class="o">=</span><span class="p">(</span><span class="n">y</span><span class="o">+</span><span class="n">yeclip</span><span class="p">)</span>
+    <span class="n">z_geoc</span><span class="o">=</span><span class="p">(</span><span class="n">z</span><span class="o">+</span><span class="n">zeclip</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">rectangular2spherical</span><span class="p">(</span><span class="n">x_geoc</span><span class="p">,</span> <span class="n">y_geoc</span><span class="p">,</span> <span class="n">z_geoc</span><span class="p">)</span></div>
+<span class="c1">#    t = ecliptic2equatorial(x_geoc, y_geoc, z_geoc, 23.4)</span>
+<span class="c1">#    return rectangular2spherical(t[0],t[1],t[2])</span>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">solarsystem</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../solarsystem.html">solarsystem package</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Ioannis Nasios.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

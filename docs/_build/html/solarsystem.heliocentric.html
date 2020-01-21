@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>solarsystem.heliocentric module &#8212; solarsystem 0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="solarsystem.moon module" href="solarsystem.moon.html" />
+    <link rel="prev" title="solarsystem.geocentric module" href="solarsystem.geocentric.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-solarsystem.heliocentric">
+<span id="solarsystem-heliocentric-module"></span><h1>solarsystem.heliocentric module<a class="headerlink" href="#module-solarsystem.heliocentric" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="solarsystem.heliocentric.Heliocentric">
+<em class="property">class </em><code class="sig-prename descclassname">solarsystem.heliocentric.</code><code class="sig-name descname">Heliocentric</code><span class="sig-paren">(</span><em class="sig-param">year</em>, <em class="sig-param">month</em>, <em class="sig-param">day</em>, <em class="sig-param">hour</em>, <em class="sig-param">minute</em>, <em class="sig-param">UT=0</em>, <em class="sig-param">dst=0</em>, <em class="sig-param">view='horizontal'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solarsystem/heliocentric.html#Heliocentric"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solarsystem.heliocentric.Heliocentric" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Import date data outputs planets positions around Sun.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>year</strong> (<em>int</em>) – Year (4 digits) ex. 2020</p></li>
+<li><p><strong>month</strong> (<em>int</em>) – Month (1-12)</p></li>
+<li><p><strong>day</strong> (<em>int</em>) – Day (1-31)</p></li>
+<li><p><strong>hour</strong> (<em>int</em>) – Hour (0-23)</p></li>
+<li><p><strong>minute</strong> (<em>int</em>) – Minute (0-60)</p></li>
+<li><p><strong>UT</strong> – Time Zone (deviation from UT, -12:+14), ex. for Greece (GMT + 2)
+enter UT = 2</p></li>
+<li><p><strong>dst</strong> (<em>int</em>) – daylight saving time (0 or 1). Wheather dst is applied at
+given time and place</p></li>
+<li><p><strong>view</strong> – desired output format. Should be one of: horizontal (long in
+degrees, lat in degrees, distance in AU) or
+rectangular (x, y, z, all in AU).
+Default: horizontal.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="solarsystem.heliocentric.Heliocentric.planetnames">
+<code class="sig-name descname">planetnames</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/solarsystem/heliocentric.html#Heliocentric.planetnames"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solarsystem.heliocentric.Heliocentric.planetnames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Names of solar system objects used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A list of solar system objects.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="solarsystem.heliocentric.Heliocentric.planets">
+<code class="sig-name descname">planets</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/solarsystem/heliocentric.html#Heliocentric.planets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solarsystem.heliocentric.Heliocentric.planets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main method which returns a dictionary of Heliocentric positions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Planet positions around sun: Dictionary of tuples. Each
+row represents a planet and each column the position of that planet.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dictionary</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">solarsystem</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="solarsystem.html">solarsystem package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="solarsystem.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="solarsystem.functions.html">solarsystem.functions module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="solarsystem.geocentric.html">solarsystem.geocentric module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">solarsystem.heliocentric module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="solarsystem.moon.html">solarsystem.moon module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="solarsystem.sunriseset.html">solarsystem.sunriseset module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="solarsystem.html#module-solarsystem">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="solarsystem.html">solarsystem package</a><ul>
+      <li>Previous: <a href="solarsystem.geocentric.html" title="previous chapter">solarsystem.geocentric module</a></li>
+      <li>Next: <a href="solarsystem.moon.html" title="next chapter">solarsystem.moon module</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Ioannis Nasios.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/solarsystem.heliocentric.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

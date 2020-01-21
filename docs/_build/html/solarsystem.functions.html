@@ -1,0 +1,357 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>solarsystem.functions module &#8212; solarsystem 0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="solarsystem.geocentric module" href="solarsystem.geocentric.html" />
+    <link rel="prev" title="solarsystem package" href="solarsystem.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-solarsystem.functions">
+<span id="solarsystem-functions-module"></span><h1>solarsystem.functions module<a class="headerlink" href="#module-solarsystem.functions" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="solarsystem.functions.Planet_Sun">
+<code class="sig-prename descclassname">solarsystem.functions.</code><code class="sig-name descname">Planet_Sun</code><span class="sig-paren">(</span><em class="sig-param">M</em>, <em class="sig-param">e</em>, <em class="sig-param">a</em>, <em class="sig-param">N</em>, <em class="sig-param">w</em>, <em class="sig-param">i</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solarsystem/functions.html#Planet_Sun"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solarsystem.functions.Planet_Sun" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper Function. From planet’s trajectory elements to position around sun</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>position elements</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="solarsystem.functions.demical2arcs">
+<code class="sig-prename descclassname">solarsystem.functions.</code><code class="sig-name descname">demical2arcs</code><span class="sig-paren">(</span><em class="sig-param">num</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solarsystem/functions.html#demical2arcs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solarsystem.functions.demical2arcs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert Demical view to Degrees and minutes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>num</strong> (<em>float</em>) – degrees to be converted.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>one string representation in degrees and minutes format.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="solarsystem.functions.demical2clock">
+<code class="sig-prename descclassname">solarsystem.functions.</code><code class="sig-name descname">demical2clock</code><span class="sig-paren">(</span><em class="sig-param">demicaltime</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solarsystem/functions.html#demical2clock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solarsystem.functions.demical2clock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert demical time view to Hours, Minutes and Seconds.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>demicaltime</strong> (<em>float</em>) – time to be converted.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>one string representation in hours, minutes format.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="solarsystem.functions.demical2hms">
+<code class="sig-prename descclassname">solarsystem.functions.</code><code class="sig-name descname">demical2hms</code><span class="sig-paren">(</span><em class="sig-param">degrees</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solarsystem/functions.html#demical2hms"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solarsystem.functions.demical2hms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert degrees to string representation of hours, minutes and seconds.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>degrees</strong> (<em>float</em>) – degrees to be converted.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>one string representation in hours, minutes and seconds format.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="solarsystem.functions.ecliptic2equatorial">
+<code class="sig-prename descclassname">solarsystem.functions.</code><code class="sig-name descname">ecliptic2equatorial</code><span class="sig-paren">(</span><em class="sig-param">xeclip</em>, <em class="sig-param">yeclip</em>, <em class="sig-param">zeclip</em>, <em class="sig-param">oblecl</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solarsystem/functions.html#ecliptic2equatorial"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solarsystem.functions.ecliptic2equatorial" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform ecliptic to equatorial projection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xeclip</strong> – value on x axis of ecliptic plane.</p></li>
+<li><p><strong>yeclip</strong> – value on y axis of ecliptic plane.</p></li>
+<li><p><strong>zeclip</strong> – value on z axis of ecliptic plane.</p></li>
+<li><p><strong>oblecl</strong> – obliquity of the ecliptic, approximately 23.4 degrees for earth</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>x, y, z equatorial projection</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="solarsystem.functions.equatorial2ecliptic">
+<code class="sig-prename descclassname">solarsystem.functions.</code><code class="sig-name descname">equatorial2ecliptic</code><span class="sig-paren">(</span><em class="sig-param">xequat</em>, <em class="sig-param">yequat</em>, <em class="sig-param">zequat</em>, <em class="sig-param">oblecl</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solarsystem/functions.html#equatorial2ecliptic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solarsystem.functions.equatorial2ecliptic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform equatorial to ecliptic projection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xequat</strong> – value on x axis of equatorial plane</p></li>
+<li><p><strong>yequat</strong> – value on y axis of equatorial plane</p></li>
+<li><p><strong>zequat</strong> – value on z axis of equatorial plane</p></li>
+<li><p><strong>oblecl</strong> – obliquity of the ecliptic, approximately 23.4 degrees for earth</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>x, y, z ecliptic projection</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="solarsystem.functions.normalize">
+<code class="sig-prename descclassname">solarsystem.functions.</code><code class="sig-name descname">normalize</code><span class="sig-paren">(</span><em class="sig-param">degrees</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solarsystem/functions.html#normalize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solarsystem.functions.normalize" title="Permalink to this definition">¶</a></dt>
+<dd><p>set degrees always between 0 - 360</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>degrees</strong> (<em>float</em>) – degrees to be adjusted</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>degrees between 0-360</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="solarsystem.functions.rectangular2spherical">
+<code class="sig-prename descclassname">solarsystem.functions.</code><code class="sig-name descname">rectangular2spherical</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">y</em>, <em class="sig-param">z</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solarsystem/functions.html#rectangular2spherical"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solarsystem.functions.rectangular2spherical" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform rectangular to spherical projection.</p>
+<p>From rectangular(x,y,z) coordinates system to spherical (RA,Decl, r) or
+by replacing x with azimuth and y with altitude we can tranform
+horizontal coordinates to ecliptic (longitude, latitude).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – value on x axis of a rectangular projection.</p></li>
+<li><p><strong>y</strong> – value on y axis of a rectangular projection.</p></li>
+<li><p><strong>z</strong> – value on z axis of a rectangular projection.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>RA, Decl, r spherical coordinate system.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="solarsystem.functions.spherical2rectangular">
+<code class="sig-prename descclassname">solarsystem.functions.</code><code class="sig-name descname">spherical2rectangular</code><span class="sig-paren">(</span><em class="sig-param">RA</em>, <em class="sig-param">Decl</em>, <em class="sig-param">r</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solarsystem/functions.html#spherical2rectangular"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solarsystem.functions.spherical2rectangular" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform spherical to rectangular projection.</p>
+<p>From spherical (RA,Decl) coordinates system to rectangular(x,y,z) or
+by replacing RA with longitude and Decl with latitude we can tranform
+ecliptic coordinates to horizontal (azimuth,altitude).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>RA</strong> – Right Ascension.</p></li>
+<li><p><strong>Decl</strong> – Declination.</p></li>
+<li><p><strong>r</strong> – Distance in astronomical units.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>x, y, z rectangular coordinate system.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="solarsystem.functions.spherical_ecliptic2equatorial">
+<code class="sig-prename descclassname">solarsystem.functions.</code><code class="sig-name descname">spherical_ecliptic2equatorial</code><span class="sig-paren">(</span><em class="sig-param">long</em>, <em class="sig-param">lat</em>, <em class="sig-param">distance</em>, <em class="sig-param">oblecl</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solarsystem/functions.html#spherical_ecliptic2equatorial"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solarsystem.functions.spherical_ecliptic2equatorial" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform eclipitc to spherical projection for given obliquity.</p>
+<p>From spherical (RA, Decl, distance) coordinates system to
+eclipitc(long, lat, distance).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>long</strong> – Longitude.</p></li>
+<li><p><strong>last</strong> – Latitude.</p></li>
+<li><p><strong>distance</strong> – Distance in astronomical units.</p></li>
+<li><p><strong>oblecl</strong> – obliquity (axial tilt).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>RA, Decl, distance spherical coordinate system.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="solarsystem.functions.spherical_equatorial2ecliptic">
+<code class="sig-prename descclassname">solarsystem.functions.</code><code class="sig-name descname">spherical_equatorial2ecliptic</code><span class="sig-paren">(</span><em class="sig-param">RA</em>, <em class="sig-param">Decl</em>, <em class="sig-param">distance</em>, <em class="sig-param">oblecl</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solarsystem/functions.html#spherical_equatorial2ecliptic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solarsystem.functions.spherical_equatorial2ecliptic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform spherical to eclipitc projection for given obliquity.</p>
+<p>From spherical (RA, Decl, distance) coordinates system to
+eclipitc(long, lat, distance).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>RA</strong> – Right Ascension.</p></li>
+<li><p><strong>Decl</strong> – Declination.</p></li>
+<li><p><strong>distance</strong> – Distance in astronomical units.</p></li>
+<li><p><strong>oblecl</strong> – obliquity (axial tilt).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>long, lat, distance eclipitc coordinate system.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="solarsystem.functions.sun2planet">
+<code class="sig-prename descclassname">solarsystem.functions.</code><code class="sig-name descname">sun2planet</code><span class="sig-paren">(</span><em class="sig-param">xeclip</em>, <em class="sig-param">yeclip</em>, <em class="sig-param">zeclip</em>, <em class="sig-param">x</em>, <em class="sig-param">y</em>, <em class="sig-param">z</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/solarsystem/functions.html#sun2planet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solarsystem.functions.sun2planet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper Function. From Hliocentric to Geocentric position</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>geocentric view of object.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">solarsystem</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="solarsystem.html">solarsystem package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="solarsystem.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">solarsystem.functions module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="solarsystem.geocentric.html">solarsystem.geocentric module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="solarsystem.heliocentric.html">solarsystem.heliocentric module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="solarsystem.moon.html">solarsystem.moon module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="solarsystem.sunriseset.html">solarsystem.sunriseset module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="solarsystem.html#module-solarsystem">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="solarsystem.html">solarsystem package</a><ul>
+      <li>Previous: <a href="solarsystem.html" title="previous chapter">solarsystem package</a></li>
+      <li>Next: <a href="solarsystem.geocentric.html" title="next chapter">solarsystem.geocentric module</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Ioannis Nasios.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/solarsystem.functions.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
