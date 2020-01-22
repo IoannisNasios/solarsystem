@@ -1,0 +1,24 @@
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+sdist/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+
+
+# Sphinx documentation
+docs/_build/
+
+
+
+# Jupyter Notebook
+.ipynb_checkpoints
