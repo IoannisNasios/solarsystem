@@ -92,7 +92,7 @@ for planet in planets_dict:
 
 #### **Documentation**
 
-Pending
+[readthedocs](https://solarsystem.readthedocs.io/en/master/index.html)
 
 
 &nbsp;   &nbsp;   &nbsp;   
