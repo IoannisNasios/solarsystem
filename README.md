@@ -1,7 +1,7 @@
 
 ### **SOLARSYSTEM** 
 
-**Our Solar System consist of:**
+**Our Solar System consists of:**
 
 * our Star, the Sun
 * 8 Planets: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus and Neptune
