@@ -1,5 +1,9 @@
 
-### **SOLARSYSTEM** 
+## **SOLARSYSTEM** 
+
+[![PyPI version](https://badge.fury.io/py/solarsystem.svg)](https://badge.fury.io/py/solarsystem)
+[![Documentation Status](https://readthedocs.org/projects/solarsystem/badge/?version=latest)](https://solarsystem.readthedocs.io/en/latest/?badge=latest)
+
 
 **Our Solar System consists of:**
 
@@ -10,7 +14,7 @@
 * Many moons orbiting planets. Our Moon (Selene in Greek  or Luna in Latin) is orbiting Earth
 
 
-**solarsystem** is a library for finding position of **planets** around **Sun** or around **Earth**.
+**solarsystem** is a python library for finding position of **planets** around **Sun** or around **Earth**.
 
 
 Also with solarsystem we can find positions around Sun/Earth of **dwarf planets** (only 3 planets so far) and **Chiron Centaur**
@@ -92,14 +96,28 @@ for planet in planets_dict:
 
 #### **Documentation**
 
-[readthedocs](https://solarsystem.readthedocs.io/en/master/index.html)
+The full documentation is available at [solarsystem.readthedocs.io](https://solarsystem.readthedocs.io)
+&nbsp; &nbsp;
+
+**Alternatively you can build documentation:**
+
+
+Go to docs/ directory
+```python
+cd docs
+```
+Build html files
+```python
+make html
+```
+Open _build/html/index.html in browser.
 
 
 &nbsp;   &nbsp;   &nbsp;   
 
 #### **Installation** 
 
-instasll from Pypi:
+install from Pypi:
 ```python
 pip install solarsystem
 ```
@@ -124,3 +142,4 @@ Exception: example notebook [Solar System Live](https://github.com/IoannisNasios
 solarsystem is MIT-licensed.
 Read [License](https://github.com/IoannisNasios/solarsystem/blob/master/LICENSE)
 
+&nbsp; 
