@@ -16,8 +16,15 @@ setuptools.setup(
     packages=setuptools.find_packages(exclude=["docs", "examples"]),
     install_requires = [],
     classifiers=[
+
+        'Programming Language :: Python',
         "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",
+        'Programming Language :: Python :: Implementation :: CPython',
+        'Programming Language :: Python :: Implementation :: PyPy',
+
+        "Topic :: Software Development :: Libraries",
+	"Topic :: Software Development :: Libraries :: Python Modules",
+
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.0',

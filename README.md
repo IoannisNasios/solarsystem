@@ -1,5 +1,5 @@
 
-## **SOLARSYSTEM** 
+# **SOLARSYSTEM** 
 
 [![PyPI version](https://badge.fury.io/py/solarsystem.svg)](https://badge.fury.io/py/solarsystem)
 [![Documentation Status](https://readthedocs.org/projects/solarsystem/badge/?version=latest)](https://solarsystem.readthedocs.io/en/latest/?badge=latest)
@@ -37,7 +37,7 @@ Except all computation above with this library a set of usefull functions are in
 &nbsp;   &nbsp;   &nbsp;   
 
 
-#### **Quick start**
+## **Quick start**
 
 ```python
 import solarsystem
@@ -80,7 +80,7 @@ for planet in planets_dict:
 
 &nbsp;   &nbsp;   &nbsp;   
 
-#### **Examples - Use Cases**
+## **Examples - Use Cases**
 
 * Solar System Live: https://github.com/IoannisNasios/solarsystem/blob/master/examples/Solar_System_Live.ipynb.
     * Plot planets around Sun, watch where planets are around Sun
@@ -94,13 +94,14 @@ for planet in planets_dict:
 
 &nbsp;   &nbsp;   &nbsp;   
 
-#### **Documentation**
+## **Documentation**
 
 The full documentation is available at [solarsystem.readthedocs.io](https://solarsystem.readthedocs.io)
 &nbsp; &nbsp;
 
 **Alternatively you can build documentation:**
 
+[install sphinx](http://www.sphinx-doc.org/en/master/usage/installation.html)
 
 Go to docs/ directory
 ```python
@@ -115,7 +116,7 @@ Open _build/html/index.html in browser.
 
 &nbsp;   &nbsp;   &nbsp;   
 
-#### **Installation** 
+## **Installation** 
 
 install from Pypi:
 ```python
@@ -129,7 +130,7 @@ pip install git+https://github.com/IoannisNasios/solarsystem
 
 &nbsp;   &nbsp;   &nbsp;   
 
-#### **Requirements**
+## **Requirements**
 
 No requirements, no additional libraries needs to be installed.
 
@@ -138,7 +139,26 @@ Exception: example notebook [Solar System Live](https://github.com/IoannisNasios
 
 &nbsp;   &nbsp;   &nbsp;   
 
-#### **License**
+
+## **Citing**
+
+If you find this library useful, please consider citing:
+
+
+```
+@misc{Nasios:2020,
+  Author = {Ioannis Nasios},
+  Title = {solarsystem},
+  Year = {2020},
+  Publisher = {GitHub},
+  Journal = {GitHub repository},
+  Howpublished = {\url{https://github.com/IoannisNasios/solarsystem}}
+}
+```
+
+&nbsp;   &nbsp;   &nbsp;  
+
+## **License**
 solarsystem is MIT-licensed.
 Read [License](https://github.com/IoannisNasios/solarsystem/blob/master/LICENSE)
 

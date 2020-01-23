@@ -13,11 +13,13 @@ wheels/
 *.egg
 MANIFEST
 
-
-
 # Sphinx documentation
 docs/_build/
 
-
 # Jupyter Notebook
 .ipynb_checkpoints
+
+#other
+solarsystem/__pycache__/
+README.html
+
