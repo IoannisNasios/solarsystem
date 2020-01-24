@@ -1,7 +1,16 @@
 import setuptools
+import os
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
+
+here = os.path.abspath(os.path.dirname(__file__))
+# What packages are required for this module to be executed?
+try:
+    with open(os.path.join(here, 'requirements.txt'), encoding='utf-8') as f:
+        REQUIRED = f.read().split('\n')
+except:
+    REQUIRED = []
 
 setuptools.setup(
     name="solarsystem", 
@@ -13,8 +22,8 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/IoannisNasios/solarsystem",
     download_url="https://github.com/IoannisNasios/solarsystem/archive/0.1.1.tar.gz",
-    packages=setuptools.find_packages(exclude=["docs", "examples"]),
-    install_requires = [],
+    packages=setuptools.find_packages(exclude=["docs", "examples", "tests"]),
+    install_requires = REQUIRED,
     classifiers=[
 
         'Programming Language :: Python',
