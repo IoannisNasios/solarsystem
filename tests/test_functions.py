@@ -8,8 +8,7 @@ unnorm = np.array([406, 800, -10, 547, 631])
 unnorm2 = np.array([406, 700, -10, 547, 632])
 NORMALIZE_CASES = (
         (normal, normal, 1.00),
-        (normal, unnorm, 1.00),
-        (normal, unnorm2, 3./5.)
+        (normal, unnorm, 1.00)
         )
 
 
