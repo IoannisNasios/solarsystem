@@ -69,8 +69,8 @@ minute = 22
 UT     = 0
 dst = 0
 
-Geq = solarsystem.Geocentric(year=year, month=month, day=day, hour=hour, minute=minute, 
-                         UT=UT, dst=dst, plane='horizontal')
+Geq = solarsystem.Geocentric(year=year, month=month, day=day, hour=hour, 
+                             minute=minute, UT=UT, dst=dst, plane='ecliptic')
 Geqp=Geq.position()
 
 
