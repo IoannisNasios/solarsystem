@@ -68,7 +68,7 @@ for planet in planets_dict:
 # Venus       5.23         -3.22        0.73
 # Earth       79.47         0.0         0.98
 # Mars        214.38        0.49        1.59
-# Jupyter     276.1         0.1         5.23
+# Jupiter     276.1         0.1         5.23
 # Saturn      292.51        0.05        10.05
 # Uranus      35.35         359.52      19.81
 # Neptune     348.02       -1.04        29.91
