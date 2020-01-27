@@ -34,9 +34,9 @@ H = solarsystem.Heliocentric(year=year, month=month, day=day, hour=hour, minute=
                          UT=UT, dst=dst, view=view )
 planets=H.planets()
 
-TEST_CASES = (
+TEST_CASES = [
         (GT, planets, 1.00)
-        )
+        ]
 
 @pytest.mark.parametrize('case', TEST_CASES)
 def test_geo(case):
