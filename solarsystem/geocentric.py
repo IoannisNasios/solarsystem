@@ -24,14 +24,15 @@ class Geocentric():
                  plane='ecliptic'):
         self.plane=plane
         self.planetoncenter = 'Earth'
+        objectlist = [ "Mercury","Venus","Earth","Mars","Jupiter","Saturn"
+                           ,"Uranus","Neptune","Pluto","Ceres","Chiron","Eris"]
         h = Heliocentric(year=year, month=month, day=day, hour=hour, 
                          minute=minute, UT=UT, dst=dst, view='rectangular' )
         hplanets = h.planets()
         planets=[]
-        for key in hplanets:
+        for key in objectlist:
             planets.append(hplanets[key])
-        self.objectlist = [ "Mercury","Venus","Earth","Mars","Jupiter","Saturn"
-                           ,"Uranus","Neptune","Pluto","Ceres","Chiron","Eris"]
+        self.objectlist = objectlist
         self.planets = planets
         self.oblecl = h.oblecl
 
