@@ -51,7 +51,7 @@ PRETRANS = np.array([  [337.78250105,  -6.61844677,   0.38462372],
                        [ 23.56182623, -11.73191245,  95.99339412] ])    
 
 TEST_CASES = (
-        (GT, PRETRANS, 1.00)
+        (GT, PRETRANS, np.array([1.00]*len(GT)))
         )   
 @pytest.mark.parametrize('case', TEST_CASES)
 def test_s2r(case):
@@ -91,7 +91,7 @@ PRETRANS =   np.array([    [  0.35369445,  -0.14446606,  -0.04433056],
                    [ 86.15221006,  37.57063938, -19.51859302]])
 
 TEST_CASES = (
-        (GT, PRETRANS, 1.00)
+        (GT, PRETRANS, np.array([1.00]*len(GT)))
         )   
 @pytest.mark.parametrize('case', TEST_CASES)
 def test_r2s(case):
