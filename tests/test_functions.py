@@ -50,15 +50,17 @@ PRETRANS = np.array([  [337.78250105,  -6.61844677,   0.38462372],
                        [  4.54531366,   2.91944783,  18.8139254 ],
                        [ 23.56182623, -11.73191245,  95.99339412] ])    
 
-NORMALIZE_CASES = (
+TEST_CASES = (
         (GT, PRETRANS, 1.00)
         )   
-@pytest.mark.parametrize('case', NORMALIZE_CASES)
+@pytest.mark.parametrize('case', TEST_CASES)
 def test_s2r(case):
     normal, unnorm, res = case
-    use_func = np.apply_along_axis(spherical2rectangular,0,unnorm)
-    
-    assert np.allclose(normal, use_func)
+    after = []
+    for i in range(len(unnorm)):
+        after.append(spherical2rectangular(unnorm[i,0],unnorm[i,1],unnorm[i,2]))
+    after = np.array(after)    
+    assert np.allclose(normal, after)
     
     
 #######################################################################
@@ -88,15 +90,17 @@ PRETRANS =   np.array([    [  0.35369445,  -0.14446606,  -0.04433056],
                    [ 18.73041376,   1.48902159,   0.95822955],
                    [ 86.15221006,  37.57063938, -19.51859302]])
 
-NORMALIZE_CASES = (
+TEST_CASES = (
         (GT, PRETRANS, 1.00)
         )   
-@pytest.mark.parametrize('case', NORMALIZE_CASES)
-def test_r2sr(case):
+@pytest.mark.parametrize('case', TEST_CASES)
+def test_r2s(case):
     normal, unnorm, res = case
-    use_func = np.apply_along_axis(rectangular2spherical,0,unnorm)
-    
-    assert np.allclose(normal, use_func)
+    after = []
+    for i in range(len(unnorm)):
+        after.append(rectangular2spherical(unnorm[i,0],unnorm[i,1],unnorm[i,2]))
+    after = np.array(after)    
+    assert np.allclose(normal, after)
 
     
 if __name__ == '__main__':
