@@ -96,7 +96,7 @@ class Heliocentric:
             list: A list of solar system objects.
             
         """  
-        return( ["Mercury","Venus","Earth","Mars","Jupyter","Saturn","Uranus",
+        return( ["Mercury","Venus","Earth","Mars","Jupiter","Saturn","Uranus",
                 "Neptune","Pluto","Ceres","Chiron","Eris"])
 
     
@@ -370,7 +370,7 @@ class Heliocentric:
                     'Venus'  :(long2_af, lat2_af, r_af),
                     'Earth'  :(self.lon, self.lat, self.r),
                     'Mars'   :(long2_ar, lat2_ar, r_ar),
-                    'Jupyter':(long2_di, lat2_di, r_di),
+                    'Jupiter':(long2_di, lat2_di, r_di),
                     'Saturn' :(long2_kr, lat2_kr, r_kr),
                     'Uranus' :(long2_ou, lat2_ou, r_ou),
                     'Neptune':(long2_po, lat2_po, r_po),
@@ -386,7 +386,7 @@ class Heliocentric:
                     'Venus'  :(xafeclip,yafeclip,zafeclip),
                     'Earth'  :(self.x2, self.y2, self.z2),
                     'Mars'   :(xareclip,yareclip,zareclip),
-                    'Jupyter':(xdieclip,ydieclip,zdieclip),
+                    'Jupiter':(xdieclip,ydieclip,zdieclip),
                     'Saturn' :(xkreclip,ykreclip,zkreclip),
                     'Uranus' :(xoueclip,youeclip,zoueclip),
                     'Neptune':(xpoeclip,ypoeclip,zpoeclip),

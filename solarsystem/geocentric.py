@@ -30,7 +30,7 @@ class Geocentric():
         planets=[]
         for key in hplanets:
             planets.append(hplanets[key])
-        self.objectlist = [ "Mercury","Venus","Earth","Mars","Jupyter","Saturn"
+        self.objectlist = [ "Mercury","Venus","Earth","Mars","Jupiter","Saturn"
                            ,"Uranus","Neptune","Pluto","Ceres","Chiron","Eris"]
         self.planets = planets
         self.oblecl = h.oblecl
@@ -80,6 +80,6 @@ class Geocentric():
             list: A list of solar system objects
             
         """               
-        orderedobjects= ["Sun", "Mercury","Venus","Mars","Jupyter","Saturn","Uranus",
+        orderedobjects= ["Sun", "Mercury","Venus","Mars","Jupiter","Saturn","Uranus",
                 "Neptune","Pluto","Ceres","Chiron","Eris"]
         return( orderedobjects )    
