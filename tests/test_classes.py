@@ -146,3 +146,32 @@ def test_moon(case):
     gt, planets, res = case
 
     assert np.allclose(gt, planets)  
+    
+    
+#######################################################################
+GT       = (5.684768007970351, 15.263481054212576)
+year   = 2020
+month  = 1
+day    = 1
+hour   = 12
+minute = 0
+UT     = 0
+dst = 0
+
+longtitude = 23.72
+latitude   = 37.98
+
+s = solarsystem.Sunriseset(year=year, month=month, day=day, 
+                         UT=UT, dst=dst, longtitude=longtitude, latitude=latitude)
+
+compute = s.riseset()
+
+TEST_CASES = [
+        (GT, compute, 1.00)
+        ]
+
+@pytest.mark.parametrize('case', TEST_CASES)
+def test_sunriseset(case):
+    gt, times, res = case
+
+    assert np.allclose(gt, times)  
