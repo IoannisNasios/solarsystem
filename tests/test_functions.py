@@ -53,9 +53,9 @@ PRETRANS = np.array([  [337.78250105,  -6.61844677,   0.38462372],
 #TEST_CASES=[]
 #for i in range(len(GT)):
 #    TEST_CASES.append((GT[i,:], PRETRANS[i,:], 1.0))
-TEST_CASES = (
+TEST_CASES = [
         (GT, PRETRANS, 1)
-        )   
+        ]   
 @pytest.mark.parametrize('case', TEST_CASES)
 def test_s2r(case):
     normal, unnorm, res = case
@@ -96,9 +96,9 @@ PRETRANS =   np.array([    [  0.35369445,  -0.14446606,  -0.04433056],
 #TEST_CASES=[]
 #for i in range(len(GT)):
 #    TEST_CASES.append((GT[i,:], PRETRANS[i,:], 1.0))    
-TEST_CASES = (
+TEST_CASES = [
         (GT, PRETRANS, 1)
-        )   
+        ]   
 @pytest.mark.parametrize('case', TEST_CASES)
 def test_r2s(case):
     normal, unnorm, res = case
