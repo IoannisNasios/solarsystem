@@ -116,32 +116,39 @@ def test_r2s(case):
 #######################################################################
 GT = np.array(['00:28:47', '08:58:12', '07:55:11', '23:06:00', '15:09:00'])
 times = np.array([0.48, 8.97, 7.92, 23.1, 15.15])
-TEST_CASES = (
+TEST_CASES = [
         (GT, times, 1.00)
-        )
+        ]
 
 @pytest.mark.parametrize('case', TEST_CASES)
 def test_d2c(case):
     gt, times, res = case
-    use_demical2clock = np.apply_along_axis(demical2clock,0,times)
+    use_demical2clock=[]
+    for i in range(len(times)):
+        use_demical2clock.append(demical2clock(times[i]))
+    use_demical2clock = np.array(use_demical2clock)
     
-    assert np.allclose(normal, use_demical2clock)
+    assert (gt==use_demical2clock).all()
 
 
 #######################################################################
 GT = np.array(['5h 18m 43s', '0h 21m 11s', '11h 19m 38s', '18h 18m 27s',
        '22h 36m 0s'])
 degrees = np.array([79.68, 5.3, 169.91, 274.614, 339])
-TEST_CASES = (
+TEST_CASES = [
         (GT, degrees, 1.00)
-        )
+        ]
 
 @pytest.mark.parametrize('case', TEST_CASES)
 def test_d2hms(case):
     gt, degrees, res = case
-    use_demical2hms = np.apply_along_axis(demical2hms,0,degrees)
+#    use_demical2hms = np.apply_along_axis(demical2hms,0,degrees)
+    use_demical2hms=[]
+    for i in range(len(degrees)):
+        use_demical2hms.append(demical2hms(degrees[i]))
+    use_demical2hms = np.array(use_demical2hms)
     
-    assert np.allclose(normal, use_demical2hms)
+    assert (gt==use_demical2hms).all()
 
 
 
@@ -149,16 +156,21 @@ def test_d2hms(case):
 GT = np.array(["1° 54.6'", "89° 38.82'", "316° 24.0'", "257° 37.8'", 
                "172° 0.0'"])
 degrees = np.array([1.91, 89.647, 316.4, 257.63, 172.0])
-TEST_CASES = (
+TEST_CASES = [
         (GT, degrees, 1.00)
-        )
+        ]
 
 @pytest.mark.parametrize('case', TEST_CASES)
 def test_d2arcs(case):
     gt, degrees, res = case
-    use_demical2arcs = np.apply_along_axis(demical2arcs,0,degrees)
+#    use_demical2arcs = np.apply_along_axis(demical2arcs,0,degrees)
+    use_demical2arcs=[]
+    for i in range(len(degrees)):
+        use_demical2arcs.append(demical2arcs(degrees[i]))
+    use_demical2arcs = np.array(use_demical2arcs)
     
-    assert np.allclose(normal, use_demical2arcs)
+    assert (gt==use_demical2arcs).all()
+
 
 
 

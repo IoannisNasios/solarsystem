@@ -81,8 +81,8 @@ H = solarsystem.Heliocentric(year=year, month=month, day=day, hour=hour, minute=
 planets3=H.planets()
 
 
-GT4 = np.array(['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus',
-       'Neptune', 'Pluto', 'Ceres', 'Chiron', 'Eris'])
+GT4 = ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus',
+       'Neptune', 'Pluto', 'Ceres', 'Chiron', 'Eris']
 planetnames = H.planetnames()
 
 TEST_CASES = [
@@ -154,8 +154,8 @@ Geq = solarsystem.Geocentric(year=year, month=month, day=day, hour=hour, minute=
 Geqp2=Geq.position()
 
 
-GT3 = np.array(['Sun', 'Mercury', 'Venus', 'Mars', 'Jupiter', 'Saturn', 'Uranus',
-       'Neptune', 'Pluto', 'Ceres', 'Chiron', 'Eris'])
+GT3 = ['Sun', 'Mercury', 'Venus', 'Mars', 'Jupiter', 'Saturn', 'Uranus',
+       'Neptune', 'Pluto', 'Ceres', 'Chiron', 'Eris']
 objectnames = Geq.objectnames()
 
 TEST_CASES = [
