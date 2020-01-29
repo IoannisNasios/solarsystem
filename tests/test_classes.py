@@ -80,10 +80,16 @@ H = solarsystem.Heliocentric(year=year, month=month, day=day, hour=hour, minute=
                          UT=UT, dst=dst, view=view )
 planets3=H.planets()
 
+
+GT4 = np.array(['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus',
+       'Neptune', 'Pluto', 'Ceres', 'Chiron', 'Eris'])
+planetnames = H.planetnames()
+
 TEST_CASES = [
         (GT, planets, 1.00),
         (GT2, planets2, 1.00),
-        (GT3, planets3, 1.00)
+        (GT3, planets3, 1.00),
+        (GT4, planetnames, 1.00)
         ]
 
 @pytest.mark.parametrize('case', TEST_CASES)
@@ -148,9 +154,14 @@ Geq = solarsystem.Geocentric(year=year, month=month, day=day, hour=hour, minute=
 Geqp2=Geq.position()
 
 
+GT3 = np.array(['Sun', 'Mercury', 'Venus', 'Mars', 'Jupiter', 'Saturn', 'Uranus',
+       'Neptune', 'Pluto', 'Ceres', 'Chiron', 'Eris'])
+objectnames = Geq.objectnames()
+
 TEST_CASES = [
         (GT, Geqp, 1.00),
-        (GT2, Geqp2, 1.00)
+        (GT2, Geqp2, 1.00),
+        (GT3, objectnames, 1.00)
         ]
 
 @pytest.mark.parametrize('case', TEST_CASES)
