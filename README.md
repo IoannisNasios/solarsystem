@@ -4,6 +4,8 @@
 [![PyPI version](https://badge.fury.io/py/solarsystem.svg)](https://badge.fury.io/py/solarsystem)
 [![Documentation Status](https://readthedocs.org/projects/solarsystem/badge/?version=latest)](https://solarsystem.readthedocs.io/en/latest/?badge=latest)
 [![Build Status](https://travis-ci.org/IoannisNasios/solarsystem.svg?branch=master)](https://travis-ci.org/IoannisNasios/solarsystem)
+[![codecov](https://codecov.io/gh/IoannisNasios/solarsystem/branch/master/graph/badge.svg)](https://codecov.io/gh/IoannisNasios/solarsystem)
+
 
 **Our Solar System consists of:**
 

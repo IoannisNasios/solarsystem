@@ -19,7 +19,12 @@ docs/_build/
 # Jupyter Notebook
 .ipynb_checkpoints
 
+# coverage
+.coverage
+coverage.xml
+
 #other
 solarsystem/__pycache__/
+tests/__pycache__/*
 README.html
 

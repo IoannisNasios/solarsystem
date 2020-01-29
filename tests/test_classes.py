@@ -203,3 +203,6 @@ def test_sunriseset(case):
     gt, times, res = case
 
     assert np.allclose(gt, times)  
+    
+if __name__ == '__main__':
+    pytest.main([__file__])        
