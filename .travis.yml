@@ -4,6 +4,10 @@ notifications:
   email:
     on_success: never
 
+branches:
+  only:
+  - master
+
 python:
   - "3.4"
   - "3.5"
@@ -18,6 +22,11 @@ install:
 
   - pip install -r requirements.txt
 
+  - pip install codecov
+
 # command to run tests
 script:
-  - pytest
+  - coverage run --source=solarsystem -m pytest -v
+
+after_success:
+  - codecov
