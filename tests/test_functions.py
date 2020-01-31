@@ -154,11 +154,11 @@ def test_d2hms(case):
 
 
 #######################################################################
-#GT = np.array(["1° 54.6'", "89° 38.82'", "316° 24.0'", "257° 37.8'", 
-#               "172° 0.0'"])
-GT = np.array(["1"+u"\u00b0"+" 54.6'", "89"+u"\u00b0"+" 38.82'", 
-               "316"+u"\u00b0"+" 24.0'", "257"+u"\u00b0"+" 37.8'",  
-               "172"+u"\u00b0"+" 0.0'"])    
+GT = np.array(["1° 54.6'", "89° 38.82'", "316° 24.0'", "257° 37.8'", 
+               "172° 0.0'"])
+#GT = np.array(["1"+u"\u00b0"+" 54.6'", "89"+u"\u00b0"+" 38.82'", 
+#               "316"+u"\u00b0"+" 24.0'", "257"+u"\u00b0"+" 37.8'",  
+#               "172"+u"\u00b0"+" 0.0'"])    
    
 degrees = np.array([1.91, 89.647, 316.4, 257.63, 172.0])
 TEST_CASES = [
@@ -173,6 +173,7 @@ def test_d2arcs(case):
     for i in range(len(degrees)):
         use_demical2arcs.append(demical2arcs(degrees[i]))
     use_demical2arcs = np.array(use_demical2arcs)
+    print(use_demical2arcs)
     assert (gt==use_demical2arcs).all()
 
 

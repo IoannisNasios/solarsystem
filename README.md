@@ -141,6 +141,11 @@ Exception: example notebook [Solar System Live](https://github.com/IoannisNasios
 
 &nbsp;   &nbsp;   &nbsp;   
 
+## **Python versions**
+* solarsystem is tested and runs normal for python versions 3.4+ and 2.7
+* running solarsystem on previous python versions should also run but use with caution.
+
+&nbsp;   &nbsp;   &nbsp;   
 
 ## **Citing**
 
