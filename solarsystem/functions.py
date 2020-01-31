@@ -1,6 +1,8 @@
+# -*- coding: utf-8 -*-
 import math
 
     
+#degree_sign= u'\N{DEGREE SIGN}'
 
 def normalize(degrees):  
     """
@@ -194,8 +196,9 @@ def demical2arcs(num):
     Returns:
         str: one string representation in degrees and minutes format.
         
-    """       
-    return(str(int(num))+u"\u00b0 "+str(round(abs(num - int(num))*60,2))+"'")
+    """
+#    return(str(int(num))+u"\u00b0 "+str(round(abs(num - int(num))*60,2))+"'")
+    return(str(int(num))+"° "+str(round(abs(num - int(num))*60,2))+"'")
 
 #def degrees2hours(degrees):
 #    """

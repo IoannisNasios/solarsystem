@@ -27,7 +27,8 @@ setuptools.setup(
     classifiers=[
 
         'Programming Language :: Python',
-        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 2",
+	"Programming Language :: Python :: 3",
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
 
@@ -36,5 +37,5 @@ setuptools.setup(
 
         "Operating System :: OS Independent",
     ],
-    python_requires='>=3.0',
+    #python_requires='>=3.0',
 )
