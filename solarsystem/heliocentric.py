@@ -368,7 +368,7 @@ class Heliocentric:
             return {
                     'Mercury':(long2_er, lat2_er, r_er),
                     'Venus'  :(long2_af, lat2_af, r_af),
-                    'Earth'  :(self.lon, self.lat, self.r),
+                    'Earth'  :(normalize(360-self.lon), self.lat, self.r),
                     'Mars'   :(long2_ar, lat2_ar, r_ar),
                     'Jupiter':(long2_di, lat2_di, r_di),
                     'Saturn' :(long2_kr, lat2_kr, r_kr),

@@ -5,6 +5,7 @@
 [![Documentation Status](https://readthedocs.org/projects/solarsystem/badge/?version=latest)](https://solarsystem.readthedocs.io/en/latest/?badge=latest)
 [![Build Status](https://travis-ci.org/IoannisNasios/solarsystem.svg?branch=master)](https://travis-ci.org/IoannisNasios/solarsystem)
 [![codecov](https://codecov.io/gh/IoannisNasios/solarsystem/branch/master/graph/badge.svg)](https://codecov.io/gh/IoannisNasios/solarsystem)
+[![Downloads](https://pepy.tech/badge/solarsystem/month)](https://pepy.tech/project/solarsystem/month)
 
 
 **Our Solar System consists of:**
@@ -68,7 +69,7 @@ for planet in planets_dict:
 # Planet      Longitude    Latitude    Distance in AU
 # Mercury     263.83       -4.06        0.47
 # Venus       5.23         -3.22        0.73
-# Earth       79.47         0.0         0.98
+# Earth       280.53        0.0         0.98
 # Mars        214.38        0.49        1.59
 # Jupiter     276.1         0.1         5.23
 # Saturn      292.51        0.05        10.05
