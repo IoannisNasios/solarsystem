@@ -1,5 +1,5 @@
 import math
-from .functions import normalize, Planet_Sun
+from .functions import normalize, Planet_Sun, rectangular2spherical
 
 class Heliocentric:
     """Import date data outputs planets positions around Sun.
@@ -86,6 +86,10 @@ class Heliocentric:
         lat = math.atan2( z2, math.sqrt( x2**2 + y2**2 ) )
         lat=normalize(math.degrees(lat))
         self.lat=lat
+        
+        self.earthX = -1*x2
+        self.earthY = -1*y2
+        self.earthZ = z2 # =0
         
         
 
@@ -363,12 +367,15 @@ class Heliocentric:
         long2_pl=normalize(math.degrees(long2_pl))
         lat2_pl=normalize(math.degrees(lat2_pl))
         
- 
+        
+        long_earth, lat_earth, dist_earth = rectangular2spherical(self.earthX, self.earthY, self.earthZ)
+        
         if self.view == 'horizontal':
             return {
                     'Mercury':(long2_er, lat2_er, r_er),
                     'Venus'  :(long2_af, lat2_af, r_af),
-                    'Earth'  :(normalize(360-self.lon), self.lat, self.r),
+                    'Earth'  :(normalize(long_earth), lat_earth, dist_earth),
+#                    'Earth'  :(self.lon, self.lat, self.r),
                     'Mars'   :(long2_ar, lat2_ar, r_ar),
                     'Jupiter':(long2_di, lat2_di, r_di),
                     'Saturn' :(long2_kr, lat2_kr, r_kr),
@@ -384,7 +391,7 @@ class Heliocentric:
             return {
                     'Mercury':(xereclip,yereclip,zereclip),
                     'Venus'  :(xafeclip,yafeclip,zafeclip),
-                    'Earth'  :(self.x2, self.y2, self.z2),
+                    'Earth'  :(self.earthX, self.earthY, self.earthZ),
                     'Mars'   :(xareclip,yareclip,zareclip),
                     'Jupiter':(xdieclip,ydieclip,zdieclip),
                     'Saturn' :(xkreclip,ykreclip,zkreclip),

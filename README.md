@@ -69,7 +69,7 @@ for planet in planets_dict:
 # Planet      Longitude    Latitude    Distance in AU
 # Mercury     263.83       -4.06        0.47
 # Venus       5.23         -3.22        0.73
-# Earth       280.53        0.0         0.98
+# Earth       100.53        0.0         0.98
 # Mars        214.38        0.49        1.59
 # Jupiter     276.1         0.1         5.23
 # Saturn      292.51        0.05        10.05

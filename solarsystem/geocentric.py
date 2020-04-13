@@ -31,7 +31,10 @@ class Geocentric():
         hplanets = h.planets()
         planets=[]
         for key in objectlist:
-            planets.append(hplanets[key])
+            if key != "Earth":
+               planets.append(hplanets[key])
+            else:
+                planets.append((h.x2, h.y2, h.z2))
         self.objectlist = objectlist
         self.planets = planets
         self.oblecl = h.oblecl

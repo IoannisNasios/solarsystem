@@ -14,14 +14,14 @@ except:
 
 setuptools.setup(
     name="solarsystem", 
-    version="0.1.4",
+    version="0.1.5",
     author="Ioannis Nasios",
     author_email="nasioannis5@gmail.com",
     description="Our Solar System. Planet's positions, Sun's and Moon' s position and rise/set",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/IoannisNasios/solarsystem",
-    download_url="https://github.com/IoannisNasios/solarsystem/archive/0.1.4.tar.gz",
+    download_url="https://github.com/IoannisNasios/solarsystem/archive/0.1.5.tar.gz",
     packages=setuptools.find_packages(exclude=["docs", "examples", "tests"]),
     install_requires = REQUIRED,
     classifiers=[
