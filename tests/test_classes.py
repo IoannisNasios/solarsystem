@@ -20,7 +20,7 @@ GT       = {
      'Eris': (23.548094614031402, -11.74427433497789, 95.99830322945104)
      }
 GT2       = {
- 'Mercury': (-0.04995474668786382, -0.46211955436524343, -0.03297239743832171),
+ 'Mercury': (-0.049954746687863795, -0.4621195543652435, -0.03297239743832171),
  'Venus': (0.7220644052172724, 0.06607221451735312, -0.04082032480874338),
  'Earth': (-0.17968356066528413, 0.9667617476807011, 0),
  'Mars': (-1.3114849994179518, -0.8973947336694352, 0.013566426916695826),
@@ -59,12 +59,12 @@ dst = 0
 
 view='horizontal'
 H = solarsystem.Heliocentric(year=year, month=month, day=day, hour=hour, minute=minute, 
-                         UT=UT, dst=dst, view=view )
+                         UT=UT, dst=dst, view=view, precession=False )
 planets=H.planets()
 
 view='rectangular'
 H = solarsystem.Heliocentric(year=year, month=month, day=day, hour=hour, minute=minute, 
-                         UT=UT, dst=dst, view=view )
+                         UT=UT, dst=dst, view=view, precession=False )
 planets2=H.planets()
 
 
@@ -77,7 +77,7 @@ UT     = 0
 dst = 0
 view='horizontal'
 H = solarsystem.Heliocentric(year=year, month=month, day=day, hour=hour, minute=minute, 
-                         UT=UT, dst=dst, view=view )
+                         UT=UT, dst=dst, view=view, precession=False )
 planets3=H.planets()
 
 
@@ -124,7 +124,7 @@ UT     = 0
 dst = 0
 
 Geq = solarsystem.Geocentric(year=year, month=month, day=day, hour=hour, 
-                             minute=minute, UT=UT, dst=dst, plane='ecliptic')
+                             minute=minute, UT=UT, dst=dst, plane='ecliptic', precession=False)
 Geqp=Geq.position()
 
 GT2        = {
@@ -150,7 +150,7 @@ minute = 11
 UT     = 0
 dst = 0
 Geq = solarsystem.Geocentric(year=year, month=month, day=day, hour=hour, minute=minute, 
-                         UT=UT, dst=dst, plane='equatorial')
+                         UT=UT, dst=dst, plane='equatorial', precession=False)
 Geqp2=Geq.position()
 
 
@@ -170,7 +170,78 @@ def test_geo(case):
 
     assert gt==planets
     
+
+########################################################################
+GT       = {
+ 'Mercury': (85.48447781077277, 4.249622141286909, 0.3080313908134294),
+ 'Venus': (138.89768144324836, 3.007889909743782, 0.7184797601869075),
+ 'Earth': (238.3717084498826, 0.0, 1.011738915568791),
+ 'Mars': (10.297625980333176, -1.1665624736283975, 1.4019357059812947),
+ 'Jupiter': (120.32822710175401, 0.44510467760678746, 5.260530714488254),
+ 'Saturn': (6.2192714330329775, 357.627352241036, 9.498446014763244),
+ 'Uranus': (61.140525582484614, 359.8308574146962, 19.447448007580306),
+ 'Neptune': (1.831471384728164, -1.3567408673135444, 29.866824811084072),
+ 'Pluto': (303.59524650999856, 355.9436981568429, 35.47028900432166),
+ 'Ceres': (54.70685575300535, -4.550747671511338, 2.779835747898551),
+ 'Chiron': (26.081292519359124, 0.3304639643684204, 18.30084284575825),
+ 'Eris': (24.38443397283854, -10.483655525835333, 95.46473499699579)
+ } 
+GT2        = {
+ 'Sun': (220.55786637995158, -15.745652318204225, 0.9913949566141237),
+ 'Mercury': (204.41005165893708, -8.04713036354636, 0.8588572318658695),
+ 'Venus': (220.5471102647177, -14.892358650380178, 1.7144959936172632),
+ 'Mars': (213.69045510124275, -13.143773035605108, 2.5736991107579468),
+ 'Jupiter': (340.47695748050035, -9.697775641426754, 4.467967187830642),
+ 'Saturn': (110.75242297224868, 21.603896657180456, 8.586420447787356),
+ 'Uranus': (207.52483035820683, -10.771358124715318, 19.41514396087036),
+ 'Neptune': (247.24184958286696, -20.251262452694917, 31.1818548238278),
+ 'Pluto': (194.18783067766907, 11.651024320874818, 31.626203796695137),
+ 'Ceres': (339.00673300516155, -22.460842756233717, 2.501308590028498),
+ 'Chiron': (19.81055386576869, 9.27314267675375, 17.58190129776312),
+ 'Eris': (20.339990391083674, -13.451748531929889, 96.84628278511121)
+ }
+
+ 
+year   = 2026
+month  = 5
+day    = 19
+hour   = 18
+minute = 0
+UT     = 0
+dst = 1
+
+view='horizontal'
+H = solarsystem.Heliocentric(year=year, month=month, day=day, hour=hour, minute=minute, 
+                         UT=UT, dst=dst, view=view, precession=True )
+planets=H.planets()
+
+
+
+year   = 1974
+month  = 11
+day    = 5
+hour   = 11
+minute = 11
+UT     = 0
+dst = 0
+Geq = solarsystem.Geocentric(year=year, month=month, day=day, hour=hour, minute=minute, 
+                         UT=UT, dst=dst, plane='equatorial', precession=True)
+Geqp2=Geq.position()
+
+
+TEST_CASES = [
+        (GT,  planets, 1.00),
+        (GT2, Geqp2, 1.00)
+        ]
+
+@pytest.mark.parametrize('case', TEST_CASES)
+def test_precession(case):
+    gt, planets, res = case
+
+    assert gt==planets
     
+    
+        
 #######################################################################
 GT       = [(336.161920584785, -4.437234727099948, 63.108778217035876),
             0.06377092588914574, (7.3145566040862855, 17.881704537217004)]

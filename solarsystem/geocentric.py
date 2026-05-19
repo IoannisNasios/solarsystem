@@ -17,17 +17,20 @@ class Geocentric():
                    given time and place
         plane: desired output format. Should be one of: ecliptic, equatorial.
                Default: ecliptic
+        precession (boolean): True or False. Apply corrections to object's 
+                              Longitude due to Earth's axis rotation.
+                              Default: True
             
     """
     
     def __init__(self, year, month, day, hour, minute, UT=0, dst=0, 
-                 plane='ecliptic'):
+                 plane='ecliptic', precession=True):
         self.plane=plane
         self.planetoncenter = 'Earth'
         objectlist = [ "Mercury","Venus","Earth","Mars","Jupiter","Saturn"
                            ,"Uranus","Neptune","Pluto","Ceres","Chiron","Eris"]
         h = Heliocentric(year=year, month=month, day=day, hour=hour, 
-                         minute=minute, UT=UT, dst=dst, view='rectangular' )
+                         minute=minute, UT=UT, dst=dst, view='rectangular', precession=precession )
         hplanets = h.planets()
         planets=[]
         for key in objectlist:
@@ -38,6 +41,7 @@ class Geocentric():
         self.objectlist = objectlist
         self.planets = planets
         self.oblecl = h.oblecl
+        self.precession=precession
 
         
     def position(self):

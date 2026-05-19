@@ -3,8 +3,6 @@
 
 [![PyPI version](https://badge.fury.io/py/solarsystem.svg)](https://badge.fury.io/py/solarsystem)
 [![Documentation Status](https://readthedocs.org/projects/solarsystem/badge/?version=latest)](https://solarsystem.readthedocs.io/en/latest/?badge=latest)
-[![Build Status](https://travis-ci.org/IoannisNasios/solarsystem.svg?branch=master)](https://travis-ci.org/IoannisNasios/solarsystem)
-[![codecov](https://codecov.io/gh/IoannisNasios/solarsystem/branch/master/graph/badge.svg)](https://codecov.io/gh/IoannisNasios/solarsystem)
 [![Downloads](https://pepy.tech/badge/solarsystem/month)](https://pepy.tech/project/solarsystem/month)
 
 
@@ -14,20 +12,19 @@
 * 8 Planets: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus and Neptune
 * Some dwarf Planets: Pluto, Ceres, Eris, (Haumea, Makemake, Quaoar, Sedna, Orcus, 2007 OR10, not yet included here)
 * Some Centaurs: Chiron (onlyone included here)
-* Many moons orbiting planets. Our Moon (Selene in Greek  or Luna in Latin) is orbiting Earth
+* Many moons orbiting planets. Our Moon (Selene in Greek  or Luna in Latin) is included here.
 
 
-**solarsystem** is a python library for finding position of **planets** around **Sun** or around **Earth**.
+**solarsystem** is a python library for calculating the position (approximately) of **planets** around **Sun** or around **Earth**.
 
 
-Also with solarsystem we can find positions around Sun/Earth of **dwarf planets** (only 3 planets so far) and **Chiron Centaur**
-and position of **moon** around Earth
+Also with solarsystem we can find the locations around Sun/Earth of the **dwarf planets** (Pluto, Ceres and Eris here), the **Chiron Centaur** and the location of **moon** around Earth.
 
 
-Furthermore we compute sunrise/sunset, moonrise/moonset and moon phase for given place (geocoordinates).
+Furthermore we compute the sunrise/sunset, moonrise/moonset datetimes as well as the moon phase for any given place on Earth (geocoordinates).
 
 
-Except all computation above with this library a set of usefull functions are included with which we can **convert between coordinate systems**:
+In addition, a set of useful functions are included for **converting between coordinate systems**:
 
 * Transform spherical to rectangular projection.
 * Transform rectangular to spherical projection.
@@ -50,7 +47,7 @@ Initialize class
 
 
 ```python
-H = solarsystem.Heliocentric(year=2020, month=1, day=1, hour=12, minute=0 )
+H = solarsystem.Heliocentric(year=2020, month=1, day=1, hour=12, minute=0, precession=True)
 ```
 
 Compute position of planets around sun
@@ -66,22 +63,23 @@ for planet in planets_dict:
 
 
 ```python
-# Planet      Longitude    Latitude    Distance in AU
-# Mercury     263.83       -4.06        0.47
-# Venus       5.23         -3.22        0.73
-# Earth       100.53        0.0         0.98
-# Mars        214.38        0.49        1.59
-# Jupiter     276.1         0.1         5.23
-# Saturn      292.51        0.05        10.05
-# Uranus      35.35         359.52      19.81
-# Neptune     348.02       -1.04        29.91
-# Pluto       292.75        359.33      33.88
-# Ceres       290.87       -5.4         2.92
-# Chiron      4.33          2.94        18.81
-# Eris        23.55        -11.74       96.0
+# Planet      Longitude   Latitude    Distance in AU
+# Mercury     263.55       -4.06       0.47
+# Venus         4.95       -3.22       0.73
+# Earth       100.25        0.0        0.98
+# Mars        214.1         0.49       1.59
+# Jupiter     275.83        0.1        5.23
+# Saturn      292.23        0.05      10.05
+# Uranus       35.07      359.52      19.81
+# Neptune     347.74       -1.04      29.91
+# Pluto       292.47      359.33      33.88
+# Ceres       290.44       -5.4        2.92
+# Chiron        3.86        2.94      18.81
+# Eris         23.08      -11.74      96.0
 ```
 
 &nbsp;   &nbsp;   &nbsp;   
+* In version 0.1.6 'precession' (of the equinoxes) was added in calculations with True been the default value.  
 
 ## **Examples - Use Cases**
 
@@ -90,9 +88,9 @@ for planet in planets_dict:
     * Get the Geocentric positions of Sun, planets, nano planets, our Moon and 1 Centaur
 
 * RiseSet Calendar : https://github.com/IoannisNasios/solarsystem/blob/master/examples/RiseSet_Calendar.ipynb.
-    * Time of sun rise and set within each day
-    Time of moon rise and set within each day
-    Moon phase - percent of illumination
+    * Time of sun rise and set within each day  
+    * Time of moon rise and set within each day  
+    * Moon phase - percent of illumination  
 
 
 &nbsp;   &nbsp;   &nbsp;   
@@ -137,14 +135,16 @@ pip install git+https://github.com/IoannisNasios/solarsystem
 
 No requirements, no additional libraries needs to be installed.
 
-Exception: example notebook [Solar System Live](https://github.com/IoannisNasios/solarsystem/blob/master/examples/Solar_System_Live.ipynb), matplotlib is needed in order to view the plot
+Exceptions:  
+* For the example notebook [Solar System Live](https://github.com/IoannisNasios/solarsystem/blob/master/examples/Solar_System_Live.ipynb), the matplotlib library is needed in order to view the plot  
+* For the [python code tests](https://github.com/IoannisNasios/solarsystem/tree/master/tests), libraries pytest and numpy are required  
 
 
 &nbsp;   &nbsp;   &nbsp;   
 
 ## **Python versions**
-* solarsystem is tested and runs normal for python versions 3.4+ and 2.7
-* running solarsystem on previous python versions should also run but use with caution.
+* solarsystem is tested and runs normal for python versions 3.4+ and 2.7  
+* running solarsystem on previous python versions should also run but use with caution.  
 
 &nbsp;   &nbsp;   &nbsp;   
 

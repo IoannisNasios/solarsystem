@@ -1,17 +1,7 @@
 # Distribution / packaging
 .Python
-build/
-develop-eggs/
 dist/
-downloads/
-eggs/
-.eggs/
-sdist/
-wheels/
 *.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
 
 # Sphinx documentation
 docs/_build/
@@ -19,12 +9,8 @@ docs/_build/
 # Jupyter Notebook
 .ipynb_checkpoints
 
-# coverage
-.coverage
-coverage.xml
-
 #other
 solarsystem/__pycache__/
 tests/__pycache__/*
 README.html
-
+.Rhistory

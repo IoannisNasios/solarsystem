@@ -289,3 +289,24 @@ def sun2planet(xeclip, yeclip, zeclip, x, y, z):
     return rectangular2spherical(x_geoc, y_geoc, z_geoc)
 #    t = ecliptic2equatorial(x_geoc, y_geoc, z_geoc, 23.4)
 #    return rectangular2spherical(t[0],t[1],t[2])
+
+def precession_longitude_correction(jd):
+    """
+    Helper Function. From Hliocentric to Geocentric position
+        
+    Args:
+        jd (float): julian date
+        
+    Returns:
+        p_arcsec (float): degrees of latitude correction
+        
+    """
+
+    T = (jd - 2451543.5) / 36525.0
+
+    # general precession in longitude (arcsec)
+    p_arcsec = 5028.796195 * T
+
+    # convert to degrees
+    return p_arcsec / 3600.0
+    

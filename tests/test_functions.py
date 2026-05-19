@@ -5,7 +5,7 @@ import numpy as np
 from solarsystem.functions import normalize
 from solarsystem.functions import demical2clock, demical2hms, demical2arcs
 from solarsystem.functions import spherical2rectangular, rectangular2spherical
-
+from solarsystem.functions import precession_longitude_correction
 
 
 #######################################################################
@@ -178,6 +178,23 @@ def test_d2arcs(case):
 
 
 
+#######################################################################
+GT = np.array([0.27943493344564224, -0.3491550297532322])
+   
+JDs = np.array([2458850.0, 2442414.0])
+TEST_CASES = [
+        (GT, JDs, 1.00)
+        ]
+
+@pytest.mark.parametrize('case', TEST_CASES)
+def test_precession(case):
+    gt, JDs, res = case
+    use_precession=[]
+    for i in range(len(JDs)):
+        use_precession.append(precession_longitude_correction(JDs[i]))
+    use_precession = np.array(use_precession)
+    print(use_precession)
+    assert (gt==use_precession).all()
 
 
     

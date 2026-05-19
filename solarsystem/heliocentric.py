@@ -1,5 +1,6 @@
 import math
 from .functions import normalize, Planet_Sun, rectangular2spherical
+from .functions import precession_longitude_correction, spherical2rectangular
 
 class Heliocentric:
     """Import date data outputs planets positions around Sun.
@@ -18,13 +19,18 @@ class Heliocentric:
               degrees, lat in degrees, distance in AU) or 
               rectangular (x, y, z, all in AU).
               Default: horizontal.
+        precession (boolean): True or False. Apply corrections to object's 
+                              Longitude due to Earth's axis rotation.
+                              Default: True
  
     """
     
     def __init__(self, year, month, day, hour, minute, UT=0, dst=0, 
-                 view='horizontal'): 
+                 view='horizontal', precession=True): 
 
         self.view = view
+        self.precession = precession
+        
         pr=0.
         if (dst==1) : pr=1/24. 
         JDN=( (367*(year) - math.floor(7*(year + math.floor((month+9 )/12))/4))
@@ -33,6 +39,10 @@ class Heliocentric:
         j2000= 2451543.5
         d= JD - j2000
         self.d = d
+        if self.precession==True:
+            self.equin_cor = precession_longitude_correction(JD)
+        else:
+            self.equin_cor = 0
         
         # sun' s trajectory elements
         w=282.9404 + 4.70935E-5 * d      
@@ -55,7 +65,9 @@ class Heliocentric:
         
         v=math.atan2(y,x)  
         v=math.degrees(v)
-        lon=(v+w)    
+        lon=(v+w) 
+        # apply precession correction 
+        lon = lon - self.equin_cor 
         lon=normalize(lon)
         lon=math.radians(lon) 
         x2=r * math.cos(lon) 
@@ -185,7 +197,7 @@ class Heliocentric:
         
         M_po=normalize(M_po)
           
-        
+        # JD=d+j2000
         #D CERES epoch 2455400.5 2010-jul-23.0   j2000= 2451543.5
         ddd = self.d + 2451543.5 - 2455400.5
         
@@ -370,6 +382,25 @@ class Heliocentric:
         
         long_earth, lat_earth, dist_earth = rectangular2spherical(self.earthX, self.earthY, self.earthZ)
         
+        # apply precession correction 
+        if self.precession==True:
+            long2_er = long2_er - self.equin_cor
+            long2_af = long2_af - self.equin_cor
+            long2_ar = long2_ar - self.equin_cor
+            long2_di = long2_di - self.equin_cor
+            long2_kr = long2_kr - self.equin_cor
+            long2_ou = long2_ou - self.equin_cor
+            long2_po = long2_po - self.equin_cor
+            long2_pl = long2_pl - self.equin_cor
+        
+            #self.equin_cor = precession_longitude_correction(JD)
+            long2_ce = long2_ce - precession_longitude_correction(self.d + 2455400.5) 
+            long2_ch = long2_ch - precession_longitude_correction(self.d + 2456400.5)
+            long2_pe = long2_pe - precession_longitude_correction(self.d + 2456400.5)
+        
+        
+                                                                                   
+        
         if self.view == 'horizontal':
             return {
                     'Mercury':(long2_er, lat2_er, r_er),
@@ -387,7 +418,19 @@ class Heliocentric:
                     'Eris'   :(long2_pe, lat2_pe, r_pe)
                     }
             
-        elif self.view == 'rectangular':     
+        elif self.view == 'rectangular':   
+            if self.precession==True:  
+                xereclip,yereclip,zereclip = spherical2rectangular(long2_er, lat2_er, r_er)
+                xafeclip,yafeclip,zafeclip = spherical2rectangular(long2_af, lat2_af, r_af)
+                xareclip,yareclip,zareclip = spherical2rectangular(long2_ar, lat2_ar, r_ar)
+                xdieclip,ydieclip,zdieclip = spherical2rectangular(long2_di, lat2_di, r_di)
+                xkreclip,ykreclip,zkreclip = spherical2rectangular(long2_kr, lat2_kr, r_kr)
+                xoueclip,youeclip,zoueclip = spherical2rectangular(long2_ou, lat2_ou, r_ou)
+                xpoeclip,ypoeclip,zpoeclip = spherical2rectangular(long2_po, lat2_po, r_po)
+                x_pl,y_pl,z_pl             = spherical2rectangular(long2_pl, lat2_pl, r_pl)
+                xceeclip,yceeclip,zceeclip = spherical2rectangular(long2_ce, lat2_ce, r_ce)
+                xcheclip,ycheclip,zcheclip = spherical2rectangular(long2_ch, lat2_ch, r_ch)
+                xpeeclip,ypeeclip,zpeeclip = spherical2rectangular(long2_pe, lat2_pe, r_pe)     
             return {
                     'Mercury':(xereclip,yereclip,zereclip),
                     'Venus'  :(xafeclip,yafeclip,zafeclip),
