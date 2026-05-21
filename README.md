@@ -3,7 +3,9 @@
 
 [![PyPI version](https://badge.fury.io/py/solarsystem.svg)](https://badge.fury.io/py/solarsystem)
 [![Documentation Status](https://readthedocs.org/projects/solarsystem/badge/?version=latest)](https://solarsystem.readthedocs.io/en/latest/?badge=latest)
-[![codecov](https://codecov.io/gh/IoannisNasios/solarsystem/graph/badge.svg?token=w2cNJJSQ65)](https://codecov.io/gh/IoannisNasios/solarsystem)[![Downloads](https://pepy.tech/badge/solarsystem/month)](https://pepy.tech/project/solarsystem)
+[![codecov](https://codecov.io/gh/IoannisNasios/solarsystem/graph/badge.svg?token=w2cNJJSQ65)](https://codecov.io/gh/IoannisNasios/solarsystem)
+[![GPL](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/IoannisNasios/solarsystem/blob/master/LICENSE)
+[![Downloads](https://pepy.tech/badge/solarsystem/month)](https://pepy.tech/project/solarsystem)
 
 
 **Our Solar System consists of:**
