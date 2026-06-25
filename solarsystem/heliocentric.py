@@ -370,33 +370,37 @@ class Heliocentric:
         
         
         long2_di=normalize(math.degrees(long2_di))
-        lat2_di=normalize(math.degrees(lat2_di))
+        #lat2_di=normalize(math.degrees(lat2_di))
+        lat2_di=math.degrees(lat2_di)
         long2_kr=normalize(math.degrees(long2_kr))
-        lat2_kr=normalize(math.degrees(lat2_kr))
+        #lat2_kr=normalize(math.degrees(lat2_kr))
+        lat2_kr=math.degrees(lat2_kr)
         long2_ou=normalize(math.degrees(long2_ou)) 
-        lat2_ou=normalize(math.degrees(lat2_ou)) 
+        #lat2_ou=normalize(math.degrees(lat2_ou)) 
+        lat2_ou=math.degrees(lat2_ou)
         
         long2_pl=normalize(math.degrees(long2_pl))
-        lat2_pl=normalize(math.degrees(lat2_pl))
+        #lat2_pl=normalize(math.degrees(lat2_pl))
+        lat2_pl=math.degrees(lat2_pl)
         
         
         long_earth, lat_earth, dist_earth = rectangular2spherical(self.earthX, self.earthY, self.earthZ)
         
         # apply precession correction 
         if self.precession==True:
-            long2_er = long2_er - self.equin_cor
-            long2_af = long2_af - self.equin_cor
-            long2_ar = long2_ar - self.equin_cor
-            long2_di = long2_di - self.equin_cor
-            long2_kr = long2_kr - self.equin_cor
-            long2_ou = long2_ou - self.equin_cor
-            long2_po = long2_po - self.equin_cor
-            long2_pl = long2_pl - self.equin_cor
+            long2_er = normalize(long2_er - self.equin_cor)
+            long2_af = normalize(long2_af - self.equin_cor)
+            long2_ar = normalize(long2_ar - self.equin_cor)
+            long2_di = normalize(long2_di - self.equin_cor)
+            long2_kr = normalize(long2_kr - self.equin_cor)
+            long2_ou = normalize(long2_ou - self.equin_cor)
+            long2_po = normalize(long2_po - self.equin_cor)
+            long2_pl = normalize(long2_pl - self.equin_cor)
         
             #self.equin_cor = precession_longitude_correction(JD)
-            long2_ce = long2_ce - precession_longitude_correction(self.d + 2455400.5) 
-            long2_ch = long2_ch - precession_longitude_correction(self.d + 2456400.5)
-            long2_pe = long2_pe - precession_longitude_correction(self.d + 2456400.5)
+            long2_ce = normalize(long2_ce - precession_longitude_correction(self.d + 2455400.5))
+            long2_ch = normalize(long2_ch - precession_longitude_correction(self.d + 2456400.5))
+            long2_pe = normalize(long2_pe - precession_longitude_correction(self.d + 2456400.5))
         
         
                                                                                    

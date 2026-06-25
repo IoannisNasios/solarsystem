@@ -1,5 +1,6 @@
 import math
 from .functions import normalize
+from datetime import datetime
 
 class Sunriseset():
     """Import date outputs Sunrise and Sunset time.
@@ -23,6 +24,9 @@ class Sunriseset():
         self.dst = dst
         self.longtitude = longtitude
         self.latitude = latitude
+        self.year=year
+        self.month=month
+        self.day=day
         pr=0.
         if (dst==1) : pr=1/24. 
         JDN= ((367*(year) - math.floor(7*(year + math.floor((month+9 )/12))/4))
@@ -40,7 +44,7 @@ class Sunriseset():
         """Get the time of sun rise and set within given date.
         
         Returns:
-            tuple: Sunrise - Sunset time of given date
+            tuple: Sunrise - Sunset datetime of given date
             
         """
         
@@ -112,4 +116,15 @@ class Sunriseset():
         anatoli=T_sun - Lha  
         disi=T_sun + Lha
         
-        return (anatoli, disi)
+#        return (anatoli, disi)
+        h=int(anatoli)
+        m=int((anatoli-int(anatoli))*60)
+        s=int((((anatoli-int(anatoli))*60)-int((anatoli-int(anatoli))*60))*60)
+        sunrise= datetime(self.year, self.month, self.day, h, m, s )
+        # sunrise= datetime(self.year, self.month, self.day, int(anatoli), int((anatoli-int(anatoli))*60))
+        h=int(disi)
+        m=int((disi-int(disi))*60)
+        s=int((((disi-int(disi))*60)-int((disi-int(disi))*60))*60)
+        sunset= datetime(self.year, self.month, self.day, h, m, s)
+        # sunset= datetime(self.year, self.month, self.day, int(disi), int((disi-int(disi))*60))
+        return (sunrise, sunset)

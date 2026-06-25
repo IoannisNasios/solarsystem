@@ -1,5 +1,5 @@
 
-# **SOLARSYSTEM** 
+# 🌌 solarsystem
 
 [![PyPI version](https://badge.fury.io/py/solarsystem.svg)](https://badge.fury.io/py/solarsystem)
 [![Documentation Status](https://readthedocs.org/projects/solarsystem/badge/?version=latest)](https://solarsystem.readthedocs.io/en/latest/?badge=latest)
@@ -8,44 +8,68 @@
 [![Downloads](https://pepy.tech/badge/solarsystem/month)](https://pepy.tech/project/solarsystem)
 
 
-**Our Solar System consists of:**
-
-* our Star, the Sun
-* 8 Planets: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus and Neptune
-* Some dwarf Planets: Pluto, Ceres, Eris, (Haumea, Makemake, Quaoar, Sedna, Orcus, 2007 OR10, not yet included here)
-* Some Centaurs: Chiron (onlyone included here)
-* Many moons orbiting planets. Our Moon (Selene in Greek  or Luna in Latin) is included here.
 
 
-**solarsystem** is a python library for calculating the position (approximately) of **planets** around **Sun** or around **Earth**.
+**solarsystem** is a lightweight, dependency-free Python library for computing Solar System positions, Solar-Lunar events, and coordinate transformations.
+
+It is designed for **education, visualization, and lightweight astronomical computation**, without requiring external ephemeris datasets or heavy scientific dependencies.
+
+---
+
+## Supported Celestial Bodies  
+
+- The Sun (our central star)  
+- All 8 major planets: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune  
+- Dwarf planets: Pluto, Ceres, Eris *(with additional bodies planned to be included in future releases)*  
+- Minor bodies: Chiron (Centaur class)  
+- Natural satellites: Earth's Moon (Luna / Selene)
+
+---
+
+## Features   
+
+The library provides tools for:  
+
+### Planetary Positioning  
+- Approximate heliocentric positions of planets
+- Geocentric positions for Earth-based observations
+- Support for dwarf planets and selected minor bodies
+
+### Solar/Lunar Events (for any location on Earth)  
+- Sunrise and sunset times 
+- Moonrise and moonset calculations
+- Lunar illumination percentage
+
+### Coordinate Transformations  
+- Spherical ↔ Cartesian  
+- Ecliptic ↔ Equatorial  
+- Ecliptic ↔ Spherical projections  
+
+---
+
+## ⚡ Installation  
+
+Install directly from PyPI:
+
+```bash
+pip install solarsystem
+```
+
+Or install from GitHub:
+```bash
+pip install git+https://github.com/IoannisNasios/solarsystem
+```
 
 
-Also with solarsystem we can find the locations around Sun/Earth of the **dwarf planets** (Pluto, Ceres and Eris here), the **Chiron Centaur** and the location of **moon** around Earth.
+---
 
-
-Furthermore we compute the sunrise/sunset, moonrise/moonset datetimes as well as the moon phase for any given place on Earth (geocoordinates).
-
-
-In addition, a set of useful functions are included for **converting between coordinate systems**:
-
-* Transform spherical to rectangular projection.
-* Transform rectangular to spherical projection.
-* Transform ecliptic to equatorial projection.
-* Transform equatorial to ecliptic projection.
-* Transform eclipitc to spherical projection.
-* Transform spherical to eclipitc projection.
-
-
-&nbsp;   &nbsp;   &nbsp;   
-
-
-## **Quick start**
+## Quick start  
 
 ```python
 import solarsystem
 ```
 
-Initialize class
+Initialize Heliocentric class
 
 
 ```python
@@ -72,87 +96,117 @@ for planet in planets_dict:
 # Mars        214.1         0.49       1.59
 # Jupiter     275.83        0.1        5.23
 # Saturn      292.23        0.05      10.05
-# Uranus       35.07      359.52      19.81
+# Uranus       35.07       -0.48      19.81
 # Neptune     347.74       -1.04      29.91
-# Pluto       292.47      359.33      33.88
+# Pluto       292.47       -0.67      33.88
 # Ceres       290.44       -5.4        2.92
 # Chiron        3.86        2.94      18.81
 # Eris         23.08      -11.74      96.0
 ```
 
-&nbsp;   &nbsp;   &nbsp;   
-* In version 0.1.6 'precession' (of the equinoxes) was added in calculations with True been the default value.  
 
-## **Examples - Use Cases**
+---
 
-* Solar System Live: https://github.com/IoannisNasios/solarsystem/blob/master/examples/Solar_System_Live.ipynb.
-    * Plot planets around Sun, watch where planets are around Sun
-    * Get the Geocentric positions of Sun, planets, nano planets, our Moon and 1 Centaur
+## Example Applications
 
-* RiseSet Calendar : https://github.com/IoannisNasios/solarsystem/blob/master/examples/RiseSet_Calendar.ipynb.
-    * Time of sun rise and set within each day  
-    * Time of moon rise and set within each day  
-    * Moon phase - percent of illumination  
+The repository includes Jupyter notebooks:
+
+- **Solar System Live**  
+  Real-time planetary visualization and animation  
+  https://github.com/IoannisNasios/solarsystem/blob/master/examples/Solar_System_Live.ipynb  
+
+- **RiseSet Calendar**  
+https://github.com/IoannisNasios/solarsystem/blob/master/examples/RiseSet_Calendar.ipynb  
+  Yearly calendar of:
+  - sunrise / sunset  
+  - moonrise / moonset  
+  - lunar illumination  
+
+---
+
+## 🌀 Precession Support (v0.1.6+)
+
+Starting from **version 0.1.6**, the library includes an optional **precession of the equinoxes correction**.
+
+- Default: `precession=True`
+- Can be disabled: `precession=False`
+
+### Why this matters:
+
+- Improves long-term coordinate consistency
+- Reduces systematic longitude drift across epochs
+- Allows both:
+  - *modern ephemeris-style calculations*
+  - *fixed-frame educational mode*
 
 
-&nbsp;   &nbsp;   &nbsp;   
+---
 
-## **Documentation**
 
-The full documentation is available at [solarsystem.readthedocs.io](https://solarsystem.readthedocs.io)
-&nbsp; &nbsp;
+## 📊 Accuracy and Validation
 
-**Alternatively you can build documentation:**
+To evaluate numerical performance, the library was compared against **JPL DE440 ephemerides**.
 
-[install sphinx](http://www.sphinx-doc.org/en/master/usage/installation.html)
+### Summary of results:
 
-Go to docs/ directory
-```python
+- Mean longitude error: *<< 1° (mean absolute error ~0.007°)*  
+- Mean latitude error: *~0.002°*  
+- Mean distance error: *~0.05 AU*  
+- Lunar illumination error: *~0.2%*  
+- Moonrise / Moonset timing difference: *~2-3 minutes*  
+
+Full results and figures are included in the accompanying research paper.  
+Validation Notebooks used can be found in https://github.com/IoannisNasios/solarsystem/blob/master/performance/
+
+These results indicate that `solarsystem` achieves **adequate calculations for various use cases**, while maintaining a lightweight computational design.
+
+
+---
+
+
+## 📚 Documentation
+
+Full documentation is available at:  
+https://solarsystem.readthedocs.io
+
+### Build documentation locally
+
+```bash
+pip install sphinx
 cd docs
-```
-Build html files
-```python
 make html
 ```
-Open _build/html/index.html in browser.
+Open _build/html/index.html in browser.  
 
 
-&nbsp;   &nbsp;   &nbsp;   
+---
 
-## **Installation** 
+## Requirements  
+Core package:  
+No external dependencies 
 
-install from Pypi:
-```python
-pip install solarsystem
-```
-
-Latest version from source:
-```python
-pip install git+https://github.com/IoannisNasios/solarsystem
-```
-
-&nbsp;   &nbsp;   &nbsp;   
-
-## **Requirements**
-
-No requirements, no additional libraries needs to be installed.
-
-Exceptions:  
-* For the example notebook [Solar System Live](https://github.com/IoannisNasios/solarsystem/blob/master/examples/Solar_System_Live.ipynb), the matplotlib library is needed in order to view the plot  
-* For the [python code tests](https://github.com/IoannisNasios/solarsystem/tree/master/tests), libraries pytest and numpy are required  
+Optional:  
+matplotlib → for visualization notebooks  
+pytest, numpy → for running tests  
+matplotlib, skyfield, numpy → for performance evaluation notebooks  
 
 
-&nbsp;   &nbsp;   &nbsp;   
+---
 
-## **Python versions**
-* solarsystem is tested and runs normal for python versions 3.4+ and 2.7  
-* running solarsystem on previous python versions should also run but use with caution.  
+## Python Support  
 
-&nbsp;   &nbsp;   &nbsp;   
+Tested on:  
 
-## **Citing**
+Python 3.4+  
+Python 2.7 (legacy support)  
 
-If you find this library useful, please consider citing:
+Newer Python versions are recommended for best performance and compatibility. 
+
+---
+
+## 📖 Citing  
+
+If you use this library in your work, please cite:  
 
 
 ```
@@ -166,10 +220,11 @@ If you find this library useful, please consider citing:
 }
 ```
 
-&nbsp;   &nbsp;   &nbsp;  
 
-## **License**
-solarsystem is MIT-licensed.
-Read [License](https://github.com/IoannisNasios/solarsystem/blob/master/LICENSE)
 
-&nbsp; 
+---
+
+## License  
+
+MIT License ©
+

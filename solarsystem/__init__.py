@@ -12,7 +12,7 @@ SolarSystem
 
 """
 
-__version__='0.1.6'
+__version__='0.1.8'
 
 from .heliocentric import Heliocentric
 from .geocentric import Geocentric

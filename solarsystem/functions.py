@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 import math
 
-    
-#degree_sign= u'\N{DEGREE SIGN}'
+
 
 def normalize(degrees):  
     """
@@ -15,6 +14,7 @@ def normalize(degrees):
         float: degrees between 0-360
         
     """
+    
     return degrees % 360
 
     
@@ -64,11 +64,11 @@ def rectangular2spherical(x, y, z):
     
     r    = math.sqrt( x*x + y*y + z*z )
     RA   = math.atan2( y, x )
-#    Decl = math.asin( z / r ) 
     Decl = math.atan2( z, math.sqrt( x*x + y*y ) )
     
     RA = normalize(math.degrees(RA))
     Decl = (math.degrees(Decl))
+    
     return (RA, Decl, r)
     
 
@@ -114,6 +114,7 @@ def equatorial2ecliptic(xequat, yequat, zequat, oblecl):
     xeclip = xequat
     yeclip = yequat * math.cos(-oblecl) - zequat * math.sin(-oblecl)
     zeclip = yequat * math.sin(-oblecl) + zequat * math.cos(-oblecl)
+    
     return (xeclip, yeclip, zeclip)
     
 
@@ -137,6 +138,7 @@ def spherical_ecliptic2equatorial(long, lat, distance, oblecl):
     
     b = spherical2rectangular(long,lat,distance)
     c = ecliptic2equatorial(b[0],b[1],b[2], oblecl)
+    
     return rectangular2spherical(c[0],c[1],c[2])
 
 
@@ -159,6 +161,7 @@ def spherical_equatorial2ecliptic(RA, Decl, distance, oblecl):
     
     b = spherical2rectangular(RA, Decl,distance)
     c = equatorial2ecliptic(b[0],b[1],b[2], oblecl)
+    
     return rectangular2spherical(c[0],c[1],c[2])
 
 
@@ -173,6 +176,7 @@ def demical2clock(demicaltime):
         str: one string representation in hours, minutes format.
         
     """ 
+    
     h = int(demicaltime)
     m = int((demicaltime - h) * 60)
     s = int(((demicaltime-h)*60 - m ) * 60)
@@ -183,6 +187,7 @@ def demical2clock(demicaltime):
     if len(m)==1: m = '0' + m
     if len(s)==1: s = '0' + s
     res = h + ':'+ m + ':'+ s
+    
     return res
 
 
@@ -197,25 +202,10 @@ def demical2arcs(num):
         str: one string representation in degrees and minutes format.
         
     """
+    
 #    return(str(int(num))+u"\u00b0 "+str(round(abs(num - int(num))*60,2))+"'")
     return(str(int(num))+"° "+str(round(abs(num - int(num))*60,2))+"'")
 
-#def degrees2hours(degrees):
-#    """
-#    Convert degrees to string representation of hours, minutes and seconds.
-#    
-#    Args:
-#        degrees (float): degrees to be converted.
-#        
-#    Returns:
-#        str: one string representation in hours, minutes and seconds format.
-#        
-#    """    
-#    h=degrees//15
-#    r=(degrees%15)*4
-#    m=int(r)
-#    s=int((r-m)*60)
-#    return (str(h)+'h '+str(m)+'m '+str(s)+'s')
 
 def demical2hms(degrees):
     """
@@ -239,6 +229,7 @@ def demical2hms(degrees):
     if len(m)==1: m =  m
     if len(s)==1: s =  s
     res = h + 'h '+ m + 'm '+ s +'s'
+    
     return res
 
 
@@ -250,6 +241,7 @@ def Planet_Sun(M, e, a, N, w, i):
         tuple: position elements
         
     """
+    
     M2=math.radians(M)
     E0=M + (180/math.pi)*e*math.sin(M2)*(1+e*math.cos(M2))
     E0=normalize(E0) 
@@ -271,6 +263,7 @@ def Planet_Sun(M, e, a, N, w, i):
     long2=normalize(math.degrees(long2))
     lat2 = math.atan2( zeclip, math.sqrt( xeclip*xeclip +yeclip*yeclip ) )
     lat2=math.degrees(lat2)
+    
     return (xeclip,yeclip,zeclip, long2, lat2, r)
 
 
@@ -282,13 +275,13 @@ def sun2planet(xeclip, yeclip, zeclip, x, y, z):
         tuple: geocentric view of object.
         
     """
+    
     x_geoc=(x+xeclip)
     y_geoc=(y+yeclip)
     z_geoc=(z+zeclip)
 
     return rectangular2spherical(x_geoc, y_geoc, z_geoc)
-#    t = ecliptic2equatorial(x_geoc, y_geoc, z_geoc, 23.4)
-#    return rectangular2spherical(t[0],t[1],t[2])
+
 
 def precession_longitude_correction(jd):
     """
@@ -309,4 +302,5 @@ def precession_longitude_correction(jd):
 
     # convert to degrees
     return p_arcsec / 3600.0
+
     
