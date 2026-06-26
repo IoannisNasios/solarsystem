@@ -206,6 +206,7 @@ Newer Python versions are recommended for best performance and compatibility.
 
 ## 📖 Citing  
 
+Preprint can be found on [Arxiv](https://arxiv.org/pdf/2606.27055)  
 If you use this library in your work, please cite:  
 
 
