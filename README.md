@@ -210,13 +210,14 @@ If you use this library in your work, please cite:
 
 
 ```
-@misc{Nasios:2020,
-  Author = {Ioannis Nasios},
-  Title = {solarsystem},
-  Year = {2020},
-  Publisher = {GitHub},
-  Journal = {GitHub repository},
-  Howpublished = {\url{https://github.com/IoannisNasios/solarsystem}}
+@misc{nasios2026solarsystemvalidatedlightweightpython,
+      title={Solarsystem: A Validated Lightweight Python Package for Planetary Positions and Solar-Lunar Event Calculations}, 
+      author={Ioannis Nasios},
+      year={2026},
+      eprint={2606.27055},
+      archivePrefix={arXiv},
+      primaryClass={astro-ph.EP},
+      url={https://arxiv.org/abs/2606.27055}, 
 }
 ```
 
