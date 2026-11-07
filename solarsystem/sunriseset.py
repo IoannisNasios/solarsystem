@@ -1,3 +1,4 @@
+import warnings
 import math
 from .functions import normalize
 from datetime import datetime
@@ -13,16 +14,21 @@ class Sunriseset():
             enter UT = 2.
         dst (int): daylight saving time (0 or 1). Wheather dst is applied at 
                    given time and place.
-        longtitude (float): longitude of place of Sunrise - Sunset in demical format.
+        longitude (float): longitude of place of Sunrise - Sunset in demical format.
         latitude (float): latitude of place of Sunrise - Sunset in demical format.
 
     """
     
-    def __init__(self, year, month, day, UT=0, dst=0, longtitude=0., 
-                 latitude=51.48):
+    def __init__(self, year, month, day, UT=0, dst=0, longitude=0., 
+                 latitude=51.48, longtitude=None):
         self.UT =  UT
         self.dst = dst
-        self.longtitude = longtitude
+        if longtitude is not None:
+            warnings.warn("'longtitude' is deprecated, use 'longitude'",
+                          DeprecationWarning, stacklevel=2)
+            longitude = longtitude
+        self.longitude = longitude
+        self.longtitude = longitude
         self.latitude = latitude
         self.year=year
         self.month=month
@@ -87,7 +93,7 @@ class Sunriseset():
         
         gmsto=L/15 + 12 
         
-        sidtime=(-self.dst + gmsto - self.UT + self.longtitude/15)
+        sidtime=(-self.dst + gmsto - self.UT + self.longitude/15)
         
         HA=(sidtime*15 - RA) #gonia oras
         HA=math.radians(HA)
