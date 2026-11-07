@@ -1,3 +1,4 @@
+import warnings
 import math      
 from .functions import normalize, spherical_ecliptic2equatorial
 from .functions import spherical_equatorial2ecliptic, demical2clock
@@ -20,7 +21,7 @@ class Moon():
             enter UT = 2
         dst (int): daylight saving time (0 or 1). Wheather dst is applied at
                    given time and place
-        longtitude (float): longitude (from -180.0 to +180.0) of place of Moonrise - Moonset
+        longitude (float): longitude (from -180.0 to +180.0) of place of Moonrise - Moonset
                             in demical format. Use negative for West
         latitude (float): latitude (from -90. to +90.) of place of Moonrise-Moonset
                           in demical format. Use negative for South
@@ -30,7 +31,7 @@ class Moon():
     """
 
     def __init__(self, year, month, day, hour, minute, UT=0, dst=0,
-                 longtitude=0., latitude=51.48, topographic=False):
+                 longitude=0., latitude=51.48, topographic=False, longtitude=None):
         self.year = year
         self.month = month
         self.day = day
@@ -38,7 +39,12 @@ class Moon():
         self.minute = minute
         self.UT = UT
         self.dst = dst
-        self.longtitude = longtitude
+        if longtitude is not None:
+            warnings.warn("'longtitude' is deprecated, use 'longitude'",
+                          DeprecationWarning, stacklevel=2)
+            longitude = longtitude
+        self.longitude = longitude
+        self.longtitude = longitude
 
         self.latitude = math.radians(latitude)
         self.topographic = topographic
@@ -63,7 +69,7 @@ class Moon():
         L=normalize(L)
 
         gmsto=L/15 + 12
-        sidtime=(-dst + gmsto - UT + longtitude/15)
+        sidtime=(-dst + gmsto - UT + longitude/15)
         self.sidtime = sidtime
         self.M = M
         self.L = L
@@ -280,8 +286,8 @@ class Moon():
 
         """
         MoonPos = Moon(year=date.year, month=date.month, day=date.day, hour=date.hour,
-               minute=date.minute, UT=self.UT, dst=self.dst, longtitude=self.longtitude,
-               latitude=self.latitude, topographic=self.topographic)
+               minute=date.minute, UT=self.UT, dst=self.dst, longitude=self.longitude,
+               latitude=math.degrees(self.latitude), topographic=self.topographic)
 
         long2, lat2, r_s = MoonPos.position()
         topRA_s, topDecl_s, r_s = spherical_ecliptic2equatorial(long2, lat2,
